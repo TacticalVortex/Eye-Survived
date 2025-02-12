@@ -40,7 +40,6 @@ func _physics_process(delta):
 	if velocity.x != 0:
 		$AnimatedSprite2D.animation = "walk"
 		$AnimatedSprite2D.flip_v = false
-		# See the note below about the following boolean assignment.
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 	elif velocity.y != 0:
 		$AnimatedSprite2D.animation = "up"
@@ -50,12 +49,15 @@ func _physics_process(delta):
 		var bullet_instance = bullet.instantiate()
 		bullet_instance.position = $BulletPoint.get_global_position()
 		bullet_instance.rotation_degrees = rotation_degrees
-		bullet_instance.apply_impulse(Vector2(), Vector2(bullet_speed, 0).rotated(rotation))
+		bullet_instance.apply_central_impulse(Vector2(bullet_speed, 0).rotated(rotation))
+		bullet_instance.add_to_group("bullet")
 		get_tree().get_root().add_child(bullet_instance)
-		#can_fire = false
-		#await(get_tree().create_timer(fire_rate))
+		can_fire = false
+		$GunTimer.start()
 
 func _on_body_entered(body):
+	if body.is_in_group("bullet"):
+		return
 	hide() # Player disappears after being hit.
 	can_fire = false
 	hit.emit()
@@ -67,3 +69,6 @@ func start(pos):
 	show()
 	can_fire = true
 	$CollisionShape2D.disabled = false
+
+func _on_gun_timer_timeout() -> void:
+	can_fire = true
