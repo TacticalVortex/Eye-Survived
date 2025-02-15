@@ -38,8 +38,7 @@ color = Color(0.17099, 0.341912, 0.608972, 1)
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 1.5
 
-[node name="ScoreTimer" type="Timer" parent="."]
-wait_time = 1.5
+[node name="TimeTimer" type="Timer" parent="."]
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -63,6 +62,6 @@ stream = ExtResource("6_tiujd")
 
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
-[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="TimeTimer" to="." method="_on_time_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
