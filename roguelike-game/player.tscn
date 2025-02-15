@@ -35,7 +35,9 @@ animations = [{
 radius = 27.0
 height = 68.0
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="Area2D" groups=["player"]]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_170y2")
 metadata/_edit_group_ = true
 

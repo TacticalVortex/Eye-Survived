@@ -3,6 +3,7 @@ extends Node
 @export var mob_scene: PackedScene
 var score
 var time
+var mob_check
 var mobs = []
 
 # Called when the node enters the scene tree for the first time.
@@ -12,8 +13,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	score = 0
+	mob_check = 0
 	for mob in mobs:
+		mob_check += 1
 		if(not is_instance_valid(mob)):
+			mobs.erase(mob_check)
 			score += 1
 	$HUD.update_score(score)
 	
@@ -50,6 +54,7 @@ func new_game():
 	$HUD.update_time(time)
 	$HUD.show_message("Get Ready")
 	get_tree().call_group("mobs", "queue_free")
+	$Player.add_to_group("player")
 	$Music.play()
 
 func _on_mob_timer_timeout():
@@ -71,10 +76,21 @@ func _on_mob_timer_timeout():
 
 func _on_time_timer_timeout():
 	time += 1
+	if time > 175:
+		$MobTimer.wait_time = 0.1
+	elif time > 120:
+		$MobTimer.wait_time = 0.25
+	elif time > 90:
+		$MobTimer.wait_time = 0.5
+	elif time > 60:
+		$MobTimer.wait_time = 0.75
+	elif time > 30:
+		$MobTimer.wait_time = 1.0
 	$HUD.update_time(time)
 
 func _on_start_timer_timeout():
 	$MobTimer.start()
+	$MobTimer.wait_time = 1.5
 	$TimeTimer.start()
 
 func despawn_mobs():

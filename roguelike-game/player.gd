@@ -4,11 +4,12 @@ signal hit
 
 @export var speed = 400
 @export var bullet_speed = 1000
-@export var fire_rate = 1
+@export var fire_rate = 0.4
 
 var screen_size
 var bullet = preload("res://bullet.tscn")
 var can_fire = false
+var chest_array = Global.chests
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -44,7 +45,9 @@ func _physics_process(delta):
 	elif velocity.y != 0:
 		$AnimatedSprite2D.animation = "up"
 		$AnimatedSprite2D.flip_v = velocity.y > 0
-		
+	
+	$GunTimer.wait_time = fire_rate
+	
 	if Input.is_action_pressed("shoot") and can_fire:
 		var bullet_instance = bullet.instantiate()
 		bullet_instance.position = $BulletPoint.get_global_position()
@@ -58,7 +61,16 @@ func _physics_process(delta):
 func _on_body_entered(body):
 	if body.is_in_group("bullet"):
 		return
+	if body.is_in_group("chest"):
+		body.queue_free()
+		increase_fire_rate()
+		return
+	for chest in chest_array:
+		if(is_instance_valid(chest)):
+			chest.queue_free()
+	chest_array.clear()
 	hide() # Player disappears after being hit.
+	$GunTimer.stop()
 	can_fire = false
 	hit.emit()
 	# Must be deferred as we can't change physics properties on a physics callback.
@@ -67,8 +79,13 @@ func _on_body_entered(body):
 func start(pos):
 	position = pos
 	show()
+	fire_rate = 0.4
 	can_fire = true
 	$CollisionShape2D.disabled = false
+
+func increase_fire_rate():
+	if fire_rate >= 0.15:
+		fire_rate -= 0.05
 
 func _on_gun_timer_timeout() -> void:
 	can_fire = true
