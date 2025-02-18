@@ -1,6 +1,8 @@
 extends Node
 
+# Global array for chests spawned
 var chests = []
+var dash_cooldown = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
