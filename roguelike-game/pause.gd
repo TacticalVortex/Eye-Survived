@@ -1,10 +1,7 @@
-extends Node
+extends CanvasLayer
 
-# Global array for chests spawned
-var chests = []
-
-# Global variable for dash cooldown
-var dash_cooldown = true
+signal resume_game
+signal quit_game
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,3 +10,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func _on_resume_button_pressed() -> void:
+	resume_game.emit()
+
+func _on_quit_button_pressed() -> void:
+	quit_game.emit()

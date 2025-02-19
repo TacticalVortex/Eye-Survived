@@ -5,13 +5,25 @@ var score
 var time
 var mob_check
 var mobs = []
+var is_paused = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	$Pause.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		is_paused = !is_paused
+		get_tree().paused = is_paused
+		if is_paused:
+			pause_menu()
+		else:
+			resume_game()
+
+	if is_paused:
+		return
+	
 	score = 0
 	mob_check = 0
 	for mob in mobs:
@@ -37,6 +49,23 @@ func _physics_process(delta: float) -> void:
 			# Choose the velocity for the mob.
 			var speed = randf_range(150.0, 250.0)
 			mob.linear_velocity = direction_vector * speed
+
+func pause_menu():
+	$TimeTimer.stop()
+	$MobTimer.stop()
+	$HUD.visible = false
+	$Pause.visible = true
+
+func resume_game():
+	get_tree().paused = !is_paused
+	is_paused = !is_paused
+	$TimeTimer.start()
+	$MobTimer.start()
+	$HUD.visible = true
+	$Pause.visible = false
+
+func quit_game():
+	get_tree().quit()
 
 func game_over():
 	$TimeTimer.stop()
