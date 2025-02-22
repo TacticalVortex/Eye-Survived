@@ -48,6 +48,10 @@ func _physics_process(delta: float) -> void:
 
 			# Choose the velocity for the mob.
 			var speed = randf_range(150.0, 250.0)
+			if time > 175:
+				speed *= 1.25
+			elif time > 90:
+				speed *= 1.15
 			mob.linear_velocity = direction_vector * speed
 
 func pause_menu():
