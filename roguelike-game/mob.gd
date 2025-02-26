@@ -13,7 +13,7 @@ func _physics_process(delta: float) -> void:
 	pass
 
 func hit():
-	if randi() % 100 < 7:
+	if randi() % 100 < 8:
 		drop_item()
 	queue_free()
 

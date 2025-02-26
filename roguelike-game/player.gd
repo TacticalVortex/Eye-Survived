@@ -115,9 +115,9 @@ func start(pos):
 	$CollisionShape2D.disabled = false
 
 func increase_fire_rate():
-	if fire_rate >= 0.10:
-		bullet_speed += 200
-		fire_rate -= 0.05
+	if fire_rate >= 0.08:
+		bullet_speed += 100
+		fire_rate -= 0.02
 
 func _on_gun_timer_timeout() -> void:
 	can_fire = true

@@ -10,6 +10,7 @@ var is_paused = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Pause.hide()
+	$Stage.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -18,6 +19,14 @@ func _physics_process(delta: float) -> void:
 		get_tree().paused = is_paused
 		if is_paused:
 			pause_menu()
+		else:
+			resume_game()
+
+	if time == 60:
+		is_paused = !is_paused
+		get_tree().paused = is_paused
+		if is_paused:
+			stage_menu()
 		else:
 			resume_game()
 
@@ -32,6 +41,9 @@ func _physics_process(delta: float) -> void:
 			mobs.erase(mob_check)
 			score += 1
 	$HUD.update_score(score)
+	
+	$HUD.update_stage(Global.stage)
+	$Stage.update_stage(Global.stage)
 	
 	for mob in mobs:
 		if(not is_instance_valid(mob)):
@@ -48,10 +60,10 @@ func _physics_process(delta: float) -> void:
 
 			# Choose the velocity for the mob.
 			var speed = randf_range(150.0, 250.0)
-			if time > 175:
-				speed *= 1.25
-			elif time > 90:
-				speed *= 1.15
+			if time > 45:
+				speed *= 1 + (0.05 * Global.stage)
+			elif time > 15:
+				speed *= 1 + (0.02 * Global.stage)
 			mob.linear_velocity = direction_vector * speed
 
 func pause_menu():
@@ -60,6 +72,13 @@ func pause_menu():
 	$HUD.visible = false
 	$Pause.visible = true
 
+func stage_menu():
+	$TimeTimer.stop()
+	$MobTimer.stop()
+	$HUD.visible = false
+	$Stage.visible = true
+	$Stage.show_buttons()
+
 func resume_game():
 	get_tree().paused = !is_paused
 	is_paused = !is_paused
@@ -67,6 +86,16 @@ func resume_game():
 	$MobTimer.start()
 	$HUD.visible = true
 	$Pause.visible = false
+
+func next_stage():
+	get_tree().paused = !is_paused
+	is_paused = !is_paused
+	time = 0
+	$TimeTimer.start()
+	$MobTimer.start()
+	Global.stage += 1
+	$HUD.visible = true
+	$Stage.visible = false
 
 func quit_game():
 	get_tree().quit()
@@ -82,6 +111,7 @@ func game_over():
 func new_game():
 	time = 0
 	score = 0
+	Global.stage = 1
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 	$HUD.update_time(time)
@@ -109,21 +139,19 @@ func _on_mob_timer_timeout():
 
 func _on_time_timer_timeout():
 	time += 1
-	if time > 175:
-		$MobTimer.wait_time = 0.1
-	elif time > 120:
-		$MobTimer.wait_time = 0.25
-	elif time > 90:
-		$MobTimer.wait_time = 0.5
-	elif time > 60:
-		$MobTimer.wait_time = 0.75
+	if time > 45:
+		$MobTimer.wait_time = 0.75 - (0.1 * (Global.stage - 1))
 	elif time > 30:
-		$MobTimer.wait_time = 1.0
+		$MobTimer.wait_time = 1.0 - (0.1 * (Global.stage - 1))
+	elif time > 15:
+		$MobTimer.wait_time = 1.25 - (0.1 * (Global.stage - 1))
+	else:
+		$MobTimer.wait_time = 1.5 - (0.1 * (Global.stage - 1))
 	$HUD.update_time(time)
 
 func _on_start_timer_timeout():
 	$MobTimer.start()
-	$MobTimer.wait_time = 1.5
+	$MobTimer.wait_time = 1.5 - (0.1 * (Global.stage - 1))
 	$TimeTimer.start()
 
 func despawn_mobs():
