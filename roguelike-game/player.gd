@@ -19,6 +19,8 @@ var is_dashing = false
 var can_dash = true
 var dash_direction = Vector2.ZERO
 
+var can_be_hit = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -88,14 +90,23 @@ func stop_dash():
 	is_dashing = false
 
 func _on_body_entered(body):
-	if body.is_in_group("bullet"):
+	if body.is_in_group("bullet") or not can_be_hit:
 		return
 	if body.is_in_group("chest"):
 		body.queue_free()
 		increase_fire_rate()
+		if randi() % 100 < 10:
+			Global.health += 1
 		return
 	if is_dashing:
 		return
+	if Global.health > 1:
+		Global.health -= 1
+		can_be_hit = false
+		$HealthTimer.start()
+		return
+	if Global.health == 1:
+		Global.health -= 1
 	for chest in chest_array:
 		if(is_instance_valid(chest)):
 			chest.queue_free()
@@ -111,6 +122,7 @@ func start(pos):
 	position = pos
 	show()
 	fire_rate = 0.4
+	Global.health = 3
 	can_fire = true
 	$CollisionShape2D.disabled = false
 
@@ -125,3 +137,6 @@ func _on_gun_timer_timeout() -> void:
 func _on_dash_cooldown_timer_timeout() -> void:
 	can_dash = true
 	Global.dash_cooldown = true
+
+func _on_health_timer_timeout() -> void:
+	can_be_hit = true

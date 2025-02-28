@@ -43,6 +43,7 @@ func _physics_process(delta: float) -> void:
 	$HUD.update_score(score)
 	
 	$HUD.update_stage(Global.stage)
+	$HUD.update_health(Global.health)
 	$Stage.update_stage(Global.stage)
 	
 	for mob in mobs:

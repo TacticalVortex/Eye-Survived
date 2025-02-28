@@ -37,7 +37,10 @@ func update_time(time):
 
 func update_stage(stage):
 	$StageLabel.text = "Stage: " + str(stage)
-	
+
+func update_health(health):
+	$HealthLabel.text = "Health: " + str(health)
+
 func update_score(score):
 	$ScoreLabel.text = "Score: " + str(score)
 	if score > high_score:
