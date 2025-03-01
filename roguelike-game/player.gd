@@ -13,7 +13,7 @@ var chest_array = Global.chests
 
 @export var dash_velocity = 1500
 @export var dash_duration = 0.2
-@export var dash_cooldown = 2.0
+@export var dash_cooldown = 3.0
 var dash_timer = 0.5
 var is_dashing = false
 var can_dash = true
@@ -90,7 +90,7 @@ func stop_dash():
 	is_dashing = false
 
 func _on_body_entered(body):
-	if body.is_in_group("bullet") or not can_be_hit:
+	if body.is_in_group("bullet"):
 		return
 	if body.is_in_group("chest"):
 		body.queue_free()
@@ -99,6 +99,9 @@ func _on_body_entered(body):
 			Global.health += 1
 		return
 	if is_dashing:
+		body.hit()
+		return
+	if not can_be_hit:
 		return
 	if Global.health > 1:
 		Global.health -= 1

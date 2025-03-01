@@ -21,8 +21,11 @@ func drop_item():
 	var item = chest.instantiate()
 	item.add_to_group("chest")
 	item.position = position
-	get_parent().add_child(item)
+	call_deferred("_add_item", item)
 	chest_array.append(item)
+
+func _add_item(item):
+	get_parent().add_child(item)
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
