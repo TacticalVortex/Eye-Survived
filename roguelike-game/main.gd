@@ -6,11 +6,14 @@ var time
 var mob_check
 var mobs = []
 var is_paused = false
+var in_game = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Pause.hide()
 	$Stage.hide()
+	$HUD.hide()
+	$Controls.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -67,6 +70,26 @@ func _physics_process(delta: float) -> void:
 				speed *= 1 + (0.02 * Global.stage)
 			mob.linear_velocity = direction_vector * speed
 
+func play_game():
+	$HUD.visible = true
+	$Menu.visible = false
+
+func controls():
+	if not in_game:
+		$Controls.visible = true
+		$Menu.visible = false
+	else:
+		$Controls.visible = true
+		$Pause.visible = false
+
+func back_button():
+	if not in_game:
+		$Controls.visible = false
+		$Menu.visible = true
+	else:
+		$Controls.visible = false
+		$Pause.visible = true
+
 func pause_menu():
 	$TimeTimer.stop()
 	$MobTimer.stop()
@@ -102,6 +125,7 @@ func quit_game():
 	get_tree().quit()
 
 func game_over():
+	in_game = false
 	$TimeTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
@@ -110,6 +134,7 @@ func game_over():
 	despawn_mobs()
 
 func new_game():
+	in_game = true
 	time = 0
 	score = 0
 	Global.stage = 1

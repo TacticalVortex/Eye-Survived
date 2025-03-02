@@ -1,8 +1,6 @@
 extends CanvasLayer
 
-signal resume_game
-signal controls
-signal quit_game
+signal back_button
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,11 +10,5 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _on_resume_button_pressed() -> void:
-	resume_game.emit()
-
-func _on_controls_button_pressed() -> void:
-	controls.emit()
-
-func _on_quit_button_pressed() -> void:
-	quit_game.emit()
+func _on_back_button_pressed() -> void:
+	back_button.emit()

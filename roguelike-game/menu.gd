@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-signal resume_game
+signal play_game
 signal controls
 signal quit_game
 
@@ -12,10 +12,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _on_resume_button_pressed() -> void:
-	resume_game.emit()
+func _on_game_button_pressed() -> void:
+	play_game.emit()
 
-func _on_controls_button_pressed() -> void:
+func _on_control_button_pressed() -> void:
 	controls.emit()
 
 func _on_quit_button_pressed() -> void:
