@@ -13,6 +13,7 @@ func _physics_process(delta: float) -> void:
 	pass
 
 func hit():
+	SoundManager.play("res://art/enemy_death.ogg")
 	if randi() % 100 < 8:
 		drop_item()
 	queue_free()

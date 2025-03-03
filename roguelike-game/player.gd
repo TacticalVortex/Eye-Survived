@@ -16,7 +16,7 @@ var chest_array = Global.chests
 @export var dash_cooldown = 3.0
 var dash_timer = 0.5
 var is_dashing = false
-var can_dash = true
+var can_dash = false
 var dash_direction = Vector2.ZERO
 
 var can_be_hit = true
@@ -74,8 +74,10 @@ func _physics_process(delta):
 		get_tree().get_root().add_child(bullet_instance)
 		can_fire = false
 		$GunTimer.start()
+		$Gunshot.play()
 
 func start_dash(velocity):
+	$Dash.play()
 	is_dashing = true
 	can_dash = false
 	Global.dash_cooldown = false
@@ -93,6 +95,7 @@ func _on_body_entered(body):
 	if body.is_in_group("bullet"):
 		return
 	if body.is_in_group("chest"):
+		$ItemPickup.play()
 		body.queue_free()
 		increase_fire_rate()
 		if randi() % 100 < 10:
@@ -105,11 +108,13 @@ func _on_body_entered(body):
 		return
 	if Global.health > 1:
 		Global.health -= 1
+		$PlayerHit.play()
 		can_be_hit = false
 		$HealthTimer.start()
 		return
 	if Global.health == 1:
 		Global.health -= 1
+		$PlayerHit.play()
 	for chest in chest_array:
 		if(is_instance_valid(chest)):
 			chest.queue_free()
@@ -127,6 +132,7 @@ func start(pos):
 	fire_rate = 0.4
 	Global.health = 3
 	can_fire = true
+	can_dash = true
 	$CollisionShape2D.disabled = false
 
 func increase_fire_rate():

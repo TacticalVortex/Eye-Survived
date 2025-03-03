@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5idu7a0lm5ak"]
+[gd_scene load_steps=10 format=3 uid="uid://c5idu7a0lm5ak"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_170y2"]
 [ext_resource type="Texture2D" uid="uid://p1p7cy0aw35n" path="res://art/player_walk1.png" id="2_7pvse"]
 [ext_resource type="Texture2D" uid="uid://c2wv8nslcmtd" path="res://art/player_walk2.png" id="3_2c3mn"]
+[ext_resource type="AudioStream" uid="uid://dt1744banegg6" path="res://art/gunshot.ogg" id="4_usvk1"]
+[ext_resource type="AudioStream" uid="uid://cikthn76ex44e" path="res://art/item_pickup.ogg" id="5_prgdg"]
+[ext_resource type="AudioStream" uid="uid://236xiuas61vm" path="res://art/player_dash.ogg" id="6_e1jap"]
+[ext_resource type="AudioStream" uid="uid://dw5bkibvh1bph" path="res://art/player_hit.ogg" id="7_ka2ee"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v0w3g"]
 animations = [{
@@ -49,6 +53,22 @@ one_shot = true
 
 [node name="HealthTimer" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="Gunshot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_usvk1")
+volume_db = 2.0
+
+[node name="ItemPickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_prgdg")
+volume_db = 6.0
+
+[node name="Dash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_e1jap")
+volume_db = 6.0
+
+[node name="PlayerHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ka2ee")
+volume_db = 2.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="GunTimer" to="." method="_on_gun_timer_timeout"]
