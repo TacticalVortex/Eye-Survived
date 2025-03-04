@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ubyxl4osbqfu"]
 
-[ext_resource type="Script" path="res://pause.gd" id="1_0piex"]
+[ext_resource type="Script" uid="uid://c03xjauc8fyf8" path="res://pause.gd" id="1_0piex"]
 [ext_resource type="FontFile" uid="uid://d3xret8asdeg6" path="res://fonts/Xolonium-Regular.ttf" id="2_w8uj3"]
 
 [node name="Pause" type="CanvasLayer"]

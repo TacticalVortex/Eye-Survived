@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cj2t80x1yfu4g"]
 
-[ext_resource type="Script" path="res://stage.gd" id="1_0n4b6"]
+[ext_resource type="Script" uid="uid://dp63rm6kihvsu" path="res://stage.gd" id="1_0n4b6"]
 [ext_resource type="FontFile" uid="uid://d3xret8asdeg6" path="res://fonts/Xolonium-Regular.ttf" id="2_a2mmv"]
 
 [node name="Stage" type="CanvasLayer"]
@@ -53,6 +53,6 @@ theme_override_fonts/font = ExtResource("2_a2mmv")
 theme_override_font_sizes/font_size = 64
 text = "Quit"
 
-[connection signal="pressed" from="NextStageButton" to="." method="_on_next_stage_button_pressed"]
 [connection signal="pressed" from="NextStageButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="NextStageButton" to="." method="_on_next_stage_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

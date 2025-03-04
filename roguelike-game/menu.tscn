@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ifrheix1e8td"]
 
 [ext_resource type="FontFile" uid="uid://d3xret8asdeg6" path="res://fonts/Xolonium-Regular.ttf" id="1_mr5qk"]
-[ext_resource type="Script" path="res://menu.gd" id="1_yw06p"]
+[ext_resource type="Script" uid="uid://bsrchl7emuag1" path="res://menu.gd" id="1_yw06p"]
 
 [node name="Menu" type="CanvasLayer"]
 process_mode = 3

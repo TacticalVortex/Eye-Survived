@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://c5idu7a0lm5ak"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_170y2"]
+[ext_resource type="Script" uid="uid://3lo8tewbxu3e" path="res://player.gd" id="1_170y2"]
 [ext_resource type="Texture2D" uid="uid://p1p7cy0aw35n" path="res://art/player_walk1.png" id="2_7pvse"]
 [ext_resource type="Texture2D" uid="uid://c2wv8nslcmtd" path="res://art/player_walk2.png" id="3_2c3mn"]
 [ext_resource type="AudioStream" uid="uid://dt1744banegg6" path="res://art/gunshot.ogg" id="4_usvk1"]
@@ -56,7 +56,7 @@ wait_time = 3.0
 
 [node name="Gunshot" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_usvk1")
-volume_db = 2.0
+volume_db = 1.0
 
 [node name="ItemPickup" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_prgdg")

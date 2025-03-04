@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://biqahnw6lv4fx"]
 
-[ext_resource type="Script" path="res://controls.gd" id="1_gf1nm"]
+[ext_resource type="Script" uid="uid://kvaq3yhkghi1" path="res://controls.gd" id="1_gf1nm"]
 [ext_resource type="FontFile" uid="uid://d3xret8asdeg6" path="res://fonts/Xolonium-Regular.ttf" id="2_t27u3"]
 
 [node name="Controls" type="CanvasLayer"]

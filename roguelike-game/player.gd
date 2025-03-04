@@ -111,6 +111,9 @@ func _on_body_entered(body):
 		$PlayerHit.play()
 		can_be_hit = false
 		$HealthTimer.start()
+		hide()
+		await get_tree().create_timer(0.1).timeout
+		show()
 		return
 	if Global.health == 1:
 		Global.health -= 1
