@@ -2,7 +2,7 @@ extends Area2D
 
 signal hit
 
-@export var speed = 400
+@export var speed = 450
 @export var bullet_speed = 1500
 @export var fire_rate = 0.4
 
@@ -11,7 +11,7 @@ var bullet = preload("res://bullet.tscn")
 var can_fire = false
 var chest_array = Global.chests
 
-@export var dash_velocity = 1500
+@export var dash_velocity = 1600
 @export var dash_duration = 0.2
 @export var dash_cooldown = 3.0
 var dash_timer = 0.5
@@ -74,6 +74,7 @@ func _physics_process(delta):
 		get_tree().get_root().add_child(bullet_instance)
 		can_fire = false
 		$GunTimer.start()
+		$Gunshot.pitch_scale = randf_range(0.92, 1.08)
 		$Gunshot.play()
 
 func start_dash(velocity):
@@ -109,6 +110,7 @@ func _on_body_entered(body):
 	if Global.health > 1:
 		Global.health -= 1
 		$PlayerHit.play()
+		speed += 200
 		can_be_hit = false
 		$HealthTimer.start()
 		hide()
@@ -151,4 +153,6 @@ func _on_dash_cooldown_timer_timeout() -> void:
 	Global.dash_cooldown = true
 
 func _on_health_timer_timeout() -> void:
+	speed -= 200
 	can_be_hit = true
+	$HealthTimer.stop()
