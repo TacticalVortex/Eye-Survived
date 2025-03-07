@@ -86,7 +86,8 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_t27u3")
 theme_override_font_sizes/font_size = 50
 text = "Shoot - Left Click
-Dash - Shift"
+Dash - Shift
+Ultimate - Space"
 horizontal_alignment = 1
 vertical_alignment = 1
 

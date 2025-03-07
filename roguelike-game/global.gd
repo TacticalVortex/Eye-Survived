@@ -6,6 +6,9 @@ var chests = []
 # Global variable for dash cooldown
 var dash_cooldown = true
 
+# Global variable for ultimate cooldown
+var ult_cooldown = true
+
 # Global variable for stage number
 var stage = 1
 

@@ -21,17 +21,34 @@ var dash_direction = Vector2.ZERO
 
 var can_be_hit = true
 
+@export var ult_duration = 3.0
+@export var ult_cooldown = 45.0
+var in_ultimate = false
+var ult_spin = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
 	hide()
 	$DashCooldownTimer.wait_time = dash_cooldown
 	$DashCooldownTimer.one_shot = true
+	$UltCooldownTimer.wait_time = ult_cooldown
+	$UltCooldownTimer.one_shot = true
+	$UltDurationTimer.wait_time = ult_duration
+	$UltDurationTimer.one_shot = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
-	look_at(get_global_mouse_position())
+	if not in_ultimate:
+		look_at(get_global_mouse_position())
+	else:
+		set_rotation(ult_spin)
+		ult_spin += delta * 70
+		make_bullet()
+		$Gunshot.pitch_scale = randf_range(0.92, 1.08)
+		$Gunshot.play()
+	
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
 	if Input.is_action_pressed("move_left"):
@@ -43,6 +60,9 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("dash") and not is_dashing and can_dash:
 		start_dash(velocity)
+	
+	if Input.is_action_just_pressed("ultimate") and not in_ultimate and Global.ult_cooldown:
+		start_ult()
 
 	if is_dashing:
 		velocity = dash_direction * dash_velocity
@@ -65,15 +85,11 @@ func _physics_process(delta):
 	
 	$GunTimer.wait_time = fire_rate
 	
-	if Input.is_action_pressed("shoot") and can_fire:
-		var bullet_instance = bullet.instantiate()
-		bullet_instance.position = $BulletPoint.get_global_position()
-		bullet_instance.rotation_degrees = rotation_degrees
-		bullet_instance.apply_central_impulse(Vector2(bullet_speed, 0).rotated(rotation))
-		bullet_instance.add_to_group("bullet")
-		get_tree().get_root().add_child(bullet_instance)
+	if Input.is_action_pressed("shoot") and can_fire and not in_ultimate:
+		make_bullet()
 		can_fire = false
 		$GunTimer.start()
+		$Gunshot.volume_db = 1.0
 		$Gunshot.pitch_scale = randf_range(0.92, 1.08)
 		$Gunshot.play()
 
@@ -92,6 +108,18 @@ func start_dash(velocity):
 func stop_dash():
 	is_dashing = false
 
+func start_ult():
+	$Gunshot.volume_db = -2
+	in_ultimate = true
+	Global.ult_cooldown = false
+	speed += 300
+	$UltCooldownTimer.start()
+	$UltDurationTimer.start()
+
+func stop_ult():
+	in_ultimate = false
+	speed -= 300
+
 func _on_body_entered(body):
 	if body.is_in_group("bullet"):
 		return
@@ -102,7 +130,7 @@ func _on_body_entered(body):
 		if randi() % 100 < 10:
 			Global.health += 1
 		return
-	if is_dashing:
+	if is_dashing or in_ultimate:
 		body.hit()
 		return
 	if not can_be_hit:
@@ -145,6 +173,14 @@ func increase_fire_rate():
 		bullet_speed += 100
 		fire_rate -= 0.02
 
+func make_bullet():
+	var bullet_instance = bullet.instantiate()
+	bullet_instance.position = $BulletPoint.get_global_position()
+	bullet_instance.rotation_degrees = rotation_degrees
+	bullet_instance.apply_central_impulse(Vector2(bullet_speed, 0).rotated(rotation))
+	bullet_instance.add_to_group("bullet")
+	get_tree().get_root().add_child(bullet_instance)
+
 func _on_gun_timer_timeout() -> void:
 	can_fire = true
 
@@ -156,3 +192,9 @@ func _on_health_timer_timeout() -> void:
 	speed -= 200
 	can_be_hit = true
 	$HealthTimer.stop()
+
+func _on_ult_duration_timer_timeout() -> void:
+	stop_ult()
+
+func _on_ult_cooldown_timer_timeout() -> void:
+	Global.ult_cooldown = true

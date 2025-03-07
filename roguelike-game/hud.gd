@@ -15,6 +15,11 @@ func _process(delta: float) -> void:
 		$DashLabel.text = "Dash Ready"
 	else:
 		$DashLabel.text = "Dash Not Ready"
+	
+	if Global.ult_cooldown:
+		$UltLabel.text = "Ultimate Ready"
+	else:
+		$UltLabel.text = "Ultimate Not Ready"
 
 func show_message(text):
 	$Message.text = text
