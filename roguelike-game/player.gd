@@ -109,7 +109,7 @@ func stop_dash():
 	is_dashing = false
 
 func start_ult():
-	$Gunshot.volume_db = -2
+	$Gunshot.volume_db = -6
 	in_ultimate = true
 	Global.ult_cooldown = false
 	speed += 300
