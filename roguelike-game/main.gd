@@ -166,13 +166,13 @@ func _on_mob_timer_timeout():
 func _on_time_timer_timeout():
 	time += 1
 	if time > 45:
-		$MobTimer.wait_time = 0.75 - (0.1 * (Global.stage - 1))
+		$MobTimer.wait_time = 0.90 - (0.1 * (Global.stage - 1))
 	elif time > 30:
-		$MobTimer.wait_time = 1.0 - (0.1 * (Global.stage - 1))
+		$MobTimer.wait_time = 1.10 - (0.1 * (Global.stage - 1))
 	elif time > 15:
 		$MobTimer.wait_time = 1.25 - (0.1 * (Global.stage - 1))
 	else:
-		$MobTimer.wait_time = 1.5 - (0.1 * (Global.stage - 1))
+		$MobTimer.wait_time = 1.50 - (0.1 * (Global.stage - 1))
 	$HUD.update_time(time)
 
 func _on_start_timer_timeout():
