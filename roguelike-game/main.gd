@@ -1,6 +1,7 @@
 extends Node
 
 @export var mob_scene: PackedScene
+@export var boss_mob_scene: PackedScene
 var score
 var time
 var mob_check
@@ -120,6 +121,18 @@ func next_stage():
 	Global.stage += 1
 	$HUD.visible = true
 	$Stage.visible = false
+	if fmod(Global.stage, 2) == 0:
+		summon_boss()
+
+func summon_boss():
+	var boss_mob = boss_mob_scene.instantiate()
+	var mob_spawn_location = $MobPath/MobSpawnLocation
+	
+	mob_spawn_location.progress_ratio = randf()
+	boss_mob.position = mob_spawn_location.position
+	
+	mobs.append(boss_mob)
+	add_child(boss_mob)
 
 func quit_game():
 	get_tree().quit()

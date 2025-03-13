@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=4 uid="uid://bkc78kubbi8rm"]
+[gd_scene load_steps=14 format=4 uid="uid://bkc78kubbi8rm"]
 
 [ext_resource type="Script" uid="uid://dbvqy7ar45w62" path="res://main.gd" id="1_er6w5"]
 [ext_resource type="PackedScene" uid="uid://76oj4onm82gy" path="res://mob.tscn" id="2_0call"]
 [ext_resource type="PackedScene" uid="uid://c5idu7a0lm5ak" path="res://player.tscn" id="2_ymm1k"]
+[ext_resource type="PackedScene" uid="uid://d1hhd671d86f6" path="res://boss_mob.tscn" id="3_4c57u"]
 [ext_resource type="PackedScene" uid="uid://de3l5t86ejwcd" path="res://hud.tscn" id="4_k5d6v"]
 [ext_resource type="AudioStream" uid="uid://c5m6s7eonumgk" path="res://art/gameover.wav" id="6_tiujd"]
 [ext_resource type="PackedScene" uid="uid://ubyxl4osbqfu" path="res://pause.tscn" id="6_vpr42"]
@@ -28,6 +29,7 @@ loop = true
 [node name="Main" type="Node"]
 script = ExtResource("1_er6w5")
 mob_scene = ExtResource("2_0call")
+boss_mob_scene = ExtResource("3_4c57u")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
