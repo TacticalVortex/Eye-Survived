@@ -20,6 +20,7 @@ func hit():
 	if health > 0:
 		health -= 1
 	else:
+		SoundManager.set_volume(2.0)
 		SoundManager.play("res://art/enemy_death.ogg")
 		queue_free()
 
