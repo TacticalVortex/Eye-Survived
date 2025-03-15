@@ -3,6 +3,9 @@ extends RigidBody2D
 var health
 var size
 
+var chest = preload("res://chest.tscn")
+var chest_array = Global.chests
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var mob_types = $AnimatedSprite2D.sprite_frames.get_animation_names()
@@ -22,7 +25,18 @@ func hit():
 	else:
 		SoundManager.set_volume(2.0)
 		SoundManager.play("res://art/enemy_death.ogg")
+		drop_item()
 		queue_free()
+
+func drop_item():
+	var item = chest.instantiate()
+	item.add_to_group("chest")
+	item.position = position
+	call_deferred("_add_item", item)
+	chest_array.append(item)
+
+func _add_item(item):
+	get_parent().add_child(item)
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
