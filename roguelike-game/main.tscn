@@ -78,6 +78,7 @@ stream = ExtResource("6_tiujd")
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="TimeTimer" to="." method="_on_time_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="quit_game" from="HUD" to="." method="quit_game"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="controls" from="Pause" to="." method="controls"]
 [connection signal="quit_game" from="Pause" to="." method="quit_game"]
