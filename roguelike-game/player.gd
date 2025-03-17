@@ -24,6 +24,7 @@ var can_be_hit = true
 @export var ult_duration = 3.0
 @export var ult_cooldown = 45.0
 var in_ultimate = false
+var can_ult = false
 var ult_spin = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -61,7 +62,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("dash") and not is_dashing and can_dash:
 		start_dash(velocity)
 	
-	if Input.is_action_just_pressed("ultimate") and not in_ultimate and Global.ult_cooldown:
+	if Input.is_action_just_pressed("ultimate") and not in_ultimate and can_ult and Global.ult_cooldown:
 		start_ult()
 
 	if is_dashing:
@@ -153,8 +154,11 @@ func _on_body_entered(body):
 			chest.queue_free()
 	chest_array.clear()
 	hide() # Player disappears after being hit.
-	$GunTimer.stop()
+	stop_timers()
 	can_fire = false
+	can_ult = false
+	Global.ult_cooldown = false
+	Global.dash_cooldown = false
 	hit.emit()
 	# Must be deferred as we can't change physics properties on a physics callback.
 	$CollisionShape2D.set_deferred("disabled", true)
@@ -166,6 +170,9 @@ func start(pos):
 	Global.health = 3
 	can_fire = true
 	can_dash = true
+	can_ult = true
+	Global.ult_cooldown = true
+	Global.dash_cooldown = true
 	$CollisionShape2D.disabled = false
 
 func increase_fire_rate():
@@ -197,4 +204,12 @@ func _on_ult_duration_timer_timeout() -> void:
 	stop_ult()
 
 func _on_ult_cooldown_timer_timeout() -> void:
+	can_ult = true
 	Global.ult_cooldown = true
+	
+func stop_timers():
+	$GunTimer.stop()
+	$DashCooldownTimer.stop()
+	$HealthTimer.stop()
+	$UltCooldownTimer.stop()
+	$UltDurationTimer.stop()
