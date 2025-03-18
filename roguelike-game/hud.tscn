@@ -132,34 +132,28 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="StartButton" type="Button" parent="."]
-anchors_preset = 7
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -240.0
-offset_right = 100.0
-offset_bottom = -140.0
+offset_left = -125.0
+offset_top = 480.0
+offset_right = 125.0
+offset_bottom = 580.0
 grow_horizontal = 2
-grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_ftl2u")
 theme_override_font_sizes/font_size = 64
 shortcut = SubResource("Shortcut_86bi8")
 text = "Start"
 
 [node name="QuitButton" type="Button" parent="."]
-anchors_preset = 7
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -120.0
-offset_right = 100.0
-offset_bottom = -20.0
+offset_left = -125.0
+offset_top = 600.0
+offset_right = 125.0
+offset_bottom = 700.0
 grow_horizontal = 2
-grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_ftl2u")
 theme_override_font_sizes/font_size = 64
 shortcut = SubResource("Shortcut_86bi8")
