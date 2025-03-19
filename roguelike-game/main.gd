@@ -4,6 +4,7 @@ extends Node
 @export var boss_mob_scene: PackedScene
 var score
 var time
+var total_time
 var mob_check
 var mobs = []
 var is_paused = false
@@ -93,12 +94,14 @@ func back_button():
 
 func pause_menu():
 	$TimeTimer.stop()
+	$TotalTimeTimer.stop()
 	$MobTimer.stop()
 	$HUD.visible = false
 	$Pause.visible = true
 
 func stage_menu():
 	$TimeTimer.stop()
+	$TotalTimeTimer.stop()
 	$MobTimer.stop()
 	$HUD.visible = false
 	$Stage.visible = true
@@ -108,6 +111,7 @@ func resume_game():
 	get_tree().paused = !is_paused
 	is_paused = !is_paused
 	$TimeTimer.start()
+	$TotalTimeTimer.start()
 	$MobTimer.start()
 	$HUD.visible = true
 	$Pause.visible = false
@@ -117,6 +121,7 @@ func next_stage():
 	is_paused = !is_paused
 	time = 0
 	$TimeTimer.start()
+	$TotalTimeTimer.start()
 	$MobTimer.start()
 	Global.stage += 1
 	$HUD.visible = true
@@ -140,6 +145,7 @@ func quit_game():
 func game_over():
 	in_game = false
 	$TimeTimer.stop()
+	$TotalTimeTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
 	$Music.stop()
@@ -149,11 +155,13 @@ func game_over():
 func new_game():
 	in_game = true
 	time = 0
+	total_time = 0
 	score = 0
 	Global.stage = 1
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 	$HUD.update_time(time)
+	$HUD.update_total_time(total_time)
 	$HUD.show_message("Get Ready")
 	get_tree().call_group("mobs", "queue_free")
 	$Player.add_to_group("player")
@@ -192,9 +200,14 @@ func _on_start_timer_timeout():
 	$MobTimer.start()
 	$MobTimer.wait_time = 1.5 - (0.1 * (Global.stage - 1))
 	$TimeTimer.start()
+	$TotalTimeTimer.start()
 
 func despawn_mobs():
 	for mob in mobs:
 		if(is_instance_valid(mob)):
 			mob.queue_free()
 	mobs.clear()
+
+func _on_total_time_timer_timeout() -> void:
+	total_time += 1
+	$HUD.update_total_time(total_time)

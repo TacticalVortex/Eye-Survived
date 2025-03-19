@@ -107,5 +107,5 @@ theme_override_fonts/font = ExtResource("2_t27u3")
 theme_override_font_sizes/font_size = 64
 text = "Back"
 
-[connection signal="pressed" from="BackButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_quit_button_pressed"]

@@ -41,6 +41,9 @@ func show_game_over():
 	
 func update_time(time):
 	$TimeLabel.text = "Time: " + str(time)
+	
+func update_total_time(time):
+	$TotalTimeLabel.text = "Total Time: " + str(time)
 
 func update_stage(stage):
 	$StageLabel.text = "Stage: " + str(stage)

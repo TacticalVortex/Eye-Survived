@@ -26,6 +26,21 @@ text = "Time: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TotalTimeLabel" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -362.0
+offset_top = 65.0
+offset_right = -87.0
+offset_bottom = 125.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("1_ftl2u")
+theme_override_font_sizes/font_size = 30
+text = "Total Time: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="StageLabel" type="Label" parent="."]
 offset_left = 77.715
 offset_right = 361.715
