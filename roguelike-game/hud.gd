@@ -5,6 +5,7 @@ signal start_game
 signal quit_game
 
 var high_score = 0
+var best_time = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -41,9 +42,11 @@ func show_game_over():
 	
 func update_time(time):
 	$TimeLabel.text = "Time: " + str(time)
-	
+
 func update_total_time(time):
-	$TotalTimeLabel.text = "Total Time: " + str(time)
+	if time > best_time:
+		best_time = time
+		$BestTimeLabel.text = "Best Time: " + str(best_time)
 
 func update_stage(stage):
 	$StageLabel.text = "Stage: " + str(stage)
