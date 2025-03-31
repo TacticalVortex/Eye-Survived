@@ -62,6 +62,14 @@ func update_score(score):
 		high_score = score
 		$HighScoreLabel.text = "Highscore: " + str(high_score)
 
+func toggle_scores():
+	if !Global.highscore_visible:
+		$HighScoreLabel.hide()
+		$BestTimeLabel.hide()
+	else:
+		$HighScoreLabel.show()
+		$BestTimeLabel.show()
+
 func _on_start_button_pressed():
 	$StartButton.hide()
 	$QuitButton.hide()

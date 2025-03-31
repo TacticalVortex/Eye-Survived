@@ -15,6 +15,9 @@ var stage = 1
 # Global variable for health
 var health = 3
 
+# Global variable for high score toggle
+var highscore_visible = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

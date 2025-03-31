@@ -211,3 +211,7 @@ func despawn_mobs():
 func _on_total_time_timer_timeout() -> void:
 	total_time += 1
 	$HUD.update_total_time(total_time)
+
+func toggle_highscores():
+	Global.highscore_visible = !Global.highscore_visible
+	$HUD.toggle_scores()

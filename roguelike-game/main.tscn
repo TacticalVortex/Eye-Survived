@@ -92,3 +92,4 @@ stream = ExtResource("6_tiujd")
 [connection signal="play_game" from="Menu" to="." method="play_game"]
 [connection signal="quit_game" from="Menu" to="." method="quit_game"]
 [connection signal="back_button" from="Controls" to="." method="back_button"]
+[connection signal="highscore_button" from="Controls" to="." method="toggle_highscores"]
