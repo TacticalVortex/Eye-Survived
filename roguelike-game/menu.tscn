@@ -28,9 +28,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -125.0
-offset_top = -135.0
+offset_top = -210.0
 offset_right = 125.0
-offset_bottom = -15.0
+offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_mr5qk")
@@ -44,14 +44,30 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -175.0
-offset_top = 40.0
+offset_top = -60.0
 offset_right = 175.0
-offset_bottom = 160.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_mr5qk")
 theme_override_font_sizes/font_size = 64
 text = "Controls"
+
+[node name="TogglesButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = 90.0
+offset_right = 175.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_mr5qk")
+theme_override_font_sizes/font_size = 64
+text = "Toggles"
 
 [node name="QuitButton" type="Button" parent="."]
 anchors_preset = 7
@@ -60,9 +76,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -125.0
-offset_top = -145.0
+offset_top = -120.0
 offset_right = 125.0
-offset_bottom = -25.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_mr5qk")
@@ -73,4 +89,5 @@ text = "Quit"
 [connection signal="pressed" from="GameButton" to="." method="_on_game_button_pressed"]
 [connection signal="pressed" from="ControlButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="ControlButton" to="." method="_on_control_button_pressed"]
+[connection signal="pressed" from="TogglesButton" to="." method="_on_toggles_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

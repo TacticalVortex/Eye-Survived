@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://bkc78kubbi8rm"]
+[gd_scene load_steps=15 format=4 uid="uid://bkc78kubbi8rm"]
 
 [ext_resource type="Script" uid="uid://dbvqy7ar45w62" path="res://main.gd" id="1_er6w5"]
 [ext_resource type="PackedScene" uid="uid://76oj4onm82gy" path="res://mob.tscn" id="2_0call"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cj2t80x1yfu4g" path="res://stage.tscn" id="7_xrdh5"]
 [ext_resource type="PackedScene" uid="uid://ifrheix1e8td" path="res://menu.tscn" id="8_f8741"]
 [ext_resource type="PackedScene" uid="uid://biqahnw6lv4fx" path="res://controls.tscn" id="9_73ba2"]
+[ext_resource type="PackedScene" uid="uid://dqqlue8yw5xpn" path="res://toggles.tscn" id="11_efxa6"]
 
 [sub_resource type="Curve2D" id="Curve2D_v8uxb"]
 _data = {
@@ -76,6 +77,8 @@ stream = ExtResource("6_tiujd")
 
 [node name="Controls" parent="." instance=ExtResource("9_73ba2")]
 
+[node name="Toggles" parent="." instance=ExtResource("11_efxa6")]
+
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="TimeTimer" to="." method="_on_time_timer_timeout"]
@@ -86,10 +89,13 @@ stream = ExtResource("6_tiujd")
 [connection signal="controls" from="Pause" to="." method="controls"]
 [connection signal="quit_game" from="Pause" to="." method="quit_game"]
 [connection signal="resume_game" from="Pause" to="." method="resume_game"]
+[connection signal="toggles" from="Pause" to="." method="toggles"]
 [connection signal="next_stage" from="Stage" to="." method="next_stage"]
 [connection signal="quit_game" from="Stage" to="." method="quit_game"]
 [connection signal="controls" from="Menu" to="." method="controls"]
 [connection signal="play_game" from="Menu" to="." method="play_game"]
 [connection signal="quit_game" from="Menu" to="." method="quit_game"]
+[connection signal="toggles" from="Menu" to="." method="toggles"]
 [connection signal="back_button" from="Controls" to="." method="back_button"]
-[connection signal="highscore_button" from="Controls" to="." method="toggle_highscores"]
+[connection signal="highscore_button" from="Toggles" to="." method="toggle_highscores"]
+[connection signal="toggles_back" from="Toggles" to="." method="toggles_back"]

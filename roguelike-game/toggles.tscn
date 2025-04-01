@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqqlue8yw5xpn"]
+
+[ext_resource type="FontFile" uid="uid://d3xret8asdeg6" path="res://fonts/Xolonium-Regular.ttf" id="1_3dd4s"]
+[ext_resource type="Script" uid="uid://bshbg4jqoeitp" path="res://toggles.gd" id="1_rm63n"]
+
+[node name="Toggles" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_rm63n")
+
+[node name="TogglesLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_right = 240.0
+offset_bottom = 150.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_3dd4s")
+theme_override_font_sizes/font_size = 72
+text = "Toggles"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -120.0
+offset_right = 125.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_3dd4s")
+theme_override_font_sizes/font_size = 64
+text = "Back"
+
+[node name="HighscoreButton" type="Button" parent="."]
+offset_left = 75.0
+offset_top = 175.0
+offset_right = 525.0
+offset_bottom = 265.0
+theme_override_fonts/font = ExtResource("1_3dd4s")
+theme_override_font_sizes/font_size = 40
+text = "Toggle Highscores"
+
+[node name="ToggleLabel" type="Label" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -530.0
+offset_top = -545.0
+offset_right = -80.0
+offset_bottom = -455.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_3dd4s")
+theme_override_font_sizes/font_size = 50
+text = "Highscores: On"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="BackButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="HighscoreButton" to="." method="_on_highscore_button_pressed"]
