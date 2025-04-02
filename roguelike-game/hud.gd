@@ -70,6 +70,12 @@ func toggle_scores():
 		$HighScoreLabel.show()
 		$BestTimeLabel.show()
 
+func toggle_fps():
+	if !Global.fps_visible:
+		$FPSLabel.hide()
+	else:
+		$FPSLabel.show()
+
 func _on_start_button_pressed():
 	$StartButton.hide()
 	$QuitButton.hide()

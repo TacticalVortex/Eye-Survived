@@ -232,3 +232,7 @@ func _on_total_time_timer_timeout() -> void:
 func toggle_highscores():
 	Global.highscore_visible = !Global.highscore_visible
 	$HUD.toggle_scores()
+
+func toggle_fps():
+	Global.fps_visible = !Global.fps_visible
+	$HUD.toggle_fps()

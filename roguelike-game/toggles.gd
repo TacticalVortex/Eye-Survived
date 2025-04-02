@@ -2,6 +2,7 @@ extends CanvasLayer
 
 signal toggles_back
 signal highscore_button
+signal fps_button
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,3 +21,10 @@ func _on_highscore_button_pressed() -> void:
 		$ToggleLabel.text = "Highscores: On"
 	else:
 		$ToggleLabel.text = "Highscores: Off"
+
+func _on_fps_button_pressed() -> void:
+	fps_button.emit()
+	if Global.fps_visible:
+		$FPSLabel.text = "FPS: On"
+	else:
+		$FPSLabel.text = "FPS: Off"
