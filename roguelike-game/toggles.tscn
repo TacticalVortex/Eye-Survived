@@ -17,7 +17,7 @@ offset_bottom = 150.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("1_3dd4s")
 theme_override_font_sizes/font_size = 72
-text = "Toggles"
+text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 

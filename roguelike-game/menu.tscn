@@ -67,7 +67,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_mr5qk")
 theme_override_font_sizes/font_size = 64
-text = "Toggles"
+text = "Settings"
 
 [node name="QuitButton" type="Button" parent="."]
 anchors_preset = 7
