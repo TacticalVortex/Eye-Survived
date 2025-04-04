@@ -175,7 +175,6 @@ offset_bottom = 700.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("1_ftl2u")
 theme_override_font_sizes/font_size = 64
-shortcut = SubResource("Shortcut_86bi8")
 text = "Quit"
 
 [node name="MessageTimer" type="Timer" parent="."]
