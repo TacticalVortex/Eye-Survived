@@ -157,6 +157,7 @@ func _on_body_entered(body):
 	stop_timers()
 	can_fire = false
 	can_ult = false
+	can_dash = false
 	Global.ult_cooldown = false
 	Global.dash_cooldown = false
 	hit.emit()

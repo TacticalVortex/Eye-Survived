@@ -18,9 +18,9 @@ func _on_back_button_pressed() -> void:
 func _on_highscore_button_pressed() -> void:
 	highscore_button.emit()
 	if Global.highscore_visible:
-		$ToggleLabel.text = "Highscores: On"
+		$ScoreLabel.text = "Highscores: On"
 	else:
-		$ToggleLabel.text = "Highscores: Off"
+		$ScoreLabel.text = "Highscores: Off"
 
 func _on_fps_button_pressed() -> void:
 	fps_button.emit()

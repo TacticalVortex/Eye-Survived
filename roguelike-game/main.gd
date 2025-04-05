@@ -16,7 +16,7 @@ func _ready():
 	$Stage.hide()
 	$HUD.hide()
 	$Controls.hide()
-	$Toggles.hide()
+	$Settings.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -95,18 +95,18 @@ func back_button():
 
 func toggles():
 	if not in_game:
-		$Toggles.visible = true
+		$Settings.visible = true
 		$Menu.visible = false
 	else:
-		$Toggles.visible = true
+		$Settings.visible = true
 		$Pause.visible = false
 
 func toggles_back():
 	if not in_game:
-		$Toggles.visible = false
+		$Settings.visible = false
 		$Menu.visible = true
 	else:
-		$Toggles.visible = false
+		$Settings.visible = false
 		$Pause.visible = true
 
 func pause_menu():
