@@ -4,20 +4,15 @@ extends RigidBody2D
 const chest = preload("res://chest.tscn")
 var chest_array = Global.chests
 
-
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 @export var health : int = 0
 
-
 func _ready() -> void:
 	var mob_types = sprite.sprite_frames.get_animation_names()
-	print("mob size: ", mob_types.size())
 	sprite.play(mob_types[randi_range(0,mob_types.size() - 1) ])
 	if Global.stage > 3:
 		if randi_range(0,100)  < (Global.stage * 2):
 			health = 1
-
-
 
 func hit() -> void:
 	if health > 0:

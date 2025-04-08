@@ -1,15 +1,13 @@
 extends Mob
 
-
 @onready var size : float = 1.3 + (Global.stage * 0.05)
-
 
 func _ready() -> void:
 	super._ready()
 	health = 20 + (5 * Global.stage)
 	self.scale = Vector2(size,size)
 
-## Overrides Mob's Hit
+# Overrides Mob's Hit
 func hit() -> void:
 	if health > 0:
 		health -= 1

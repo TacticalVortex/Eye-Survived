@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://dqqlue8yw5xpn"]
 
 [ext_resource type="FontFile" uid="uid://d3xret8asdeg6" path="res://fonts/Xolonium-Regular.ttf" id="1_3dd4s"]
-[ext_resource type="Script" uid="uid://bshbg4jqoeitp" path="res://toggles.gd" id="1_rm63n"]
+[ext_resource type="Script" uid="uid://bshbg4jqoeitp" path="res://settings.gd" id="1_nkug2"]
 
 [node name="Settings" type="CanvasLayer"]
 process_mode = 3
-script = ExtResource("1_rm63n")
+script = ExtResource("1_nkug2")
 
 [node name="SettingsLabel" type="Label" parent="."]
 anchors_preset = 5
@@ -91,7 +91,7 @@ text = "FPS: On"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="HighscoreButton" to="." method="_on_highscore_button_pressed"]
 [connection signal="pressed" from="FPSButton" to="." method="_on_fps_button_pressed"]
