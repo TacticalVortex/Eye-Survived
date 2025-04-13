@@ -87,7 +87,7 @@ stream = ExtResource("6_tiujd")
 [connection signal="quit_game" from="HUD" to="." method="quit_game"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="controls" from="Pause" to="." method="controls"]
-[connection signal="quit_game" from="Pause" to="." method="quit_game"]
+[connection signal="main_menu" from="Pause" to="." method="main_menu"]
 [connection signal="resume_game" from="Pause" to="." method="resume_game"]
 [connection signal="toggles" from="Pause" to="." method="toggles"]
 [connection signal="next_stage" from="Stage" to="." method="next_stage"]

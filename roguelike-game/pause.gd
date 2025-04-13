@@ -2,7 +2,7 @@ extends CanvasLayer
 
 signal resume_game
 signal controls
-signal quit_game
+signal main_menu
 signal toggles
 
 # Called when the node enters the scene tree for the first time.
@@ -20,7 +20,7 @@ func _on_controls_button_pressed() -> void:
 	controls.emit()
 
 func _on_quit_button_pressed() -> void:
-	quit_game.emit()
+	main_menu.emit()
 
 func _on_toggles_button_pressed() -> void:
 	toggles.emit()

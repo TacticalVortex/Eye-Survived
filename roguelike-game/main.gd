@@ -116,6 +116,16 @@ func pause_menu():
 	$HUD.visible = false
 	$Pause.visible = true
 
+func main_menu():
+	get_tree().paused = !is_paused
+	is_paused = !is_paused
+	$TimeTimer.start()
+	$TotalTimeTimer.start()
+	$MobTimer.start()
+	$HUD.visible = true
+	$Pause.visible = false
+	$Player.player_death()
+
 func stage_menu():
 	$TimeTimer.stop()
 	$TotalTimeTimer.stop()
