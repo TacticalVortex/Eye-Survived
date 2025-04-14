@@ -192,7 +192,8 @@ func new_game():
 	$HUD.show_message("Get Ready")
 	get_tree().call_group("mobs", "queue_free")
 	$Player.add_to_group("player")
-	$Music.play()
+	if Global.music_on:
+		$Music.play()
 
 func _on_mob_timer_timeout():
 	# Create a new instance of the Mob scene.
@@ -246,3 +247,11 @@ func toggle_highscores():
 func toggle_fps():
 	Global.fps_visible = !Global.fps_visible
 	$HUD.toggle_fps()
+
+func toggle_music():
+	Global.music_on = !Global.music_on
+	if !Global.music_on:
+		$Music.stop()
+	elif Global.music_on and is_paused:
+		$Music.play()
+		$Music.stream_paused = true

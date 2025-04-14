@@ -85,9 +85,9 @@ theme_override_fonts/font = ExtResource("1_mr5qk")
 theme_override_font_sizes/font_size = 64
 text = "Quit"
 
-[connection signal="pressed" from="GameButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="GameButton" to="." method="_on_game_button_pressed"]
-[connection signal="pressed" from="ControlButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="GameButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="ControlButton" to="." method="_on_control_button_pressed"]
+[connection signal="pressed" from="ControlButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="TogglesButton" to="." method="_on_toggles_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

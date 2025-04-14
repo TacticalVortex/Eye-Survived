@@ -64,6 +64,7 @@ curve = SubResource("Curve2D_v8uxb")
 [node name="HUD" parent="." instance=ExtResource("4_k5d6v")]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 1
 stream = SubResource("AudioStreamOggVorbis_vhsds")
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
@@ -99,4 +100,5 @@ stream = ExtResource("6_tiujd")
 [connection signal="back_button" from="Controls" to="." method="back_button"]
 [connection signal="fps_button" from="Settings" to="." method="toggle_fps"]
 [connection signal="highscore_button" from="Settings" to="." method="toggle_highscores"]
+[connection signal="music_button" from="Settings" to="." method="toggle_music"]
 [connection signal="toggles_back" from="Settings" to="." method="toggles_back"]

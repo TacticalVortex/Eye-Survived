@@ -3,6 +3,7 @@ extends CanvasLayer
 signal toggles_back
 signal highscore_button
 signal fps_button
+signal music_button
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,3 +29,10 @@ func _on_fps_button_pressed() -> void:
 		$FPSLabel.text = "FPS: On"
 	else:
 		$FPSLabel.text = "FPS: Off"
+
+func _on_music_button_pressed() -> void:
+	music_button.emit()
+	if Global.music_on:
+		$MusicLabel.text = "Music: On"
+	else:
+		$MusicLabel.text = "Music: Off"
