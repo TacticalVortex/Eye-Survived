@@ -5,7 +5,8 @@ extends Mob
 func _ready() -> void:
 	super._ready()
 	health = 20 + (5 * Global.stage)
-	self.scale = Vector2(size,size)
+	$AnimatedSprite2D.scale = Vector2(size, size)
+	$CollisionShape2D.scale = Vector2(size, size)
 
 # Overrides Mob's Hit
 func hit() -> void:

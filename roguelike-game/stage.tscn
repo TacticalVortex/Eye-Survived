@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cj2t80x1yfu4g"]
+[gd_scene load_steps=7 format=3 uid="uid://cj2t80x1yfu4g"]
 
 [ext_resource type="Script" uid="uid://dp63rm6kihvsu" path="res://stage.gd" id="1_0n4b6"]
 [ext_resource type="FontFile" uid="uid://d3xret8asdeg6" path="res://fonts/Xolonium-Regular.ttf" id="2_a2mmv"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_aees8"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_rnkuw"]
+events = [SubResource("InputEventAction_aees8")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_gx6sy"]
+action = &"quit"
+
+[sub_resource type="Shortcut" id="Shortcut_16g40"]
+events = [SubResource("InputEventAction_gx6sy")]
 
 [node name="Stage" type="CanvasLayer"]
 process_mode = 3
@@ -28,13 +40,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -225.0
-offset_top = -60.0
+offset_top = -35.0
 offset_right = 225.0
-offset_bottom = 60.0
+offset_bottom = 85.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_a2mmv")
 theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_rnkuw")
 text = "Next Stage"
 
 [node name="QuitButton" type="Button" parent="."]
@@ -43,15 +56,16 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -125.0
+offset_left = -212.5
 offset_top = -170.0
-offset_right = 125.0
+offset_right = 212.5
 offset_bottom = -60.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_a2mmv")
 theme_override_font_sizes/font_size = 64
-text = "Quit"
+shortcut = SubResource("Shortcut_16g40")
+text = "Main Menu"
 
 [connection signal="pressed" from="NextStageButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="NextStageButton" to="." method="_on_next_stage_button_pressed"]

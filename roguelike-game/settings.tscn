@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqqlue8yw5xpn"]
+[gd_scene load_steps=5 format=3 uid="uid://dqqlue8yw5xpn"]
 
 [ext_resource type="FontFile" uid="uid://d3xret8asdeg6" path="res://fonts/Xolonium-Regular.ttf" id="1_3dd4s"]
 [ext_resource type="Script" uid="uid://bshbg4jqoeitp" path="res://settings.gd" id="1_nkug2"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_nkug2"]
+action = &"pause"
+
+[sub_resource type="Shortcut" id="Shortcut_3ykye"]
+events = [SubResource("InputEventAction_nkug2")]
 
 [node name="Settings" type="CanvasLayer"]
 process_mode = 3
@@ -35,6 +41,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_3dd4s")
 theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_3ykye")
 text = "Back"
 
 [node name="HighscoreButton" type="Button" parent="."]

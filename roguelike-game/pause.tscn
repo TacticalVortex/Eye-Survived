@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://ubyxl4osbqfu"]
+[gd_scene load_steps=7 format=3 uid="uid://ubyxl4osbqfu"]
 
 [ext_resource type="Script" uid="uid://c03xjauc8fyf8" path="res://pause.gd" id="1_0piex"]
 [ext_resource type="FontFile" uid="uid://d3xret8asdeg6" path="res://fonts/Xolonium-Regular.ttf" id="2_w8uj3"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_aq7p1"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_6eyaj"]
+events = [SubResource("InputEventAction_aq7p1")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_8u653"]
+action = &"quit"
+
+[sub_resource type="Shortcut" id="Shortcut_bwtow"]
+events = [SubResource("InputEventAction_8u653")]
 
 [node name="Pause" type="CanvasLayer"]
 process_mode = 3
@@ -35,6 +47,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_w8uj3")
 theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_6eyaj")
 text = "Resume"
 
 [node name="ControlsButton" type="Button" parent="."]
@@ -83,6 +96,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_w8uj3")
 theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_bwtow")
 text = "Main Menu"
 
 [connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
