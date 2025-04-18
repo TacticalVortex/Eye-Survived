@@ -13,6 +13,8 @@ func _ready() -> void:
 	if Global.stage > 3:
 		if randi_range(0,100)  < (Global.stage * 2):
 			health = 1
+			$AnimatedSprite2D.scale = Vector2(1.05, 1.05)
+			$CollisionShape2D.scale = Vector2(1.05, 1.05)
 
 func hit() -> void:
 	if health > 0:
