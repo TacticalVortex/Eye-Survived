@@ -6,7 +6,7 @@ func _ready() -> void:
 	set_max_contacts_reported(1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	for node in get_colliding_bodies():
 		if node.is_in_group("mobs"):
 			node.hit()

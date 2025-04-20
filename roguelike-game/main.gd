@@ -19,7 +19,7 @@ func _ready():
 	$Settings.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause") and $TimeTimer.time_left > 0:
 		is_paused = !is_paused
 		get_tree().paused = is_paused
