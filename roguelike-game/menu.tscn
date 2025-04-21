@@ -99,9 +99,9 @@ theme_override_font_sizes/font_size = 64
 shortcut = SubResource("Shortcut_mae5d")
 text = "Quit"
 
-[connection signal="pressed" from="GameButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="GameButton" to="." method="_on_game_button_pressed"]
-[connection signal="pressed" from="ControlButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="GameButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="ControlButton" to="." method="_on_control_button_pressed"]
+[connection signal="pressed" from="ControlButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="TogglesButton" to="." method="_on_toggles_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
