@@ -23,10 +23,13 @@ script = ExtResource("1_0n4b6")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -240.0
-offset_right = 240.0
+offset_left = -307.5
+offset_right = 307.5
 offset_bottom = 150.0
 grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_a2mmv")
 theme_override_font_sizes/font_size = 64
 text = "Stage 1 Complete"
@@ -67,6 +70,6 @@ theme_override_font_sizes/font_size = 64
 shortcut = SubResource("Shortcut_16g40")
 text = "Main Menu"
 
-[connection signal="pressed" from="NextStageButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="NextStageButton" to="." method="_on_next_stage_button_pressed"]
+[connection signal="pressed" from="NextStageButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
