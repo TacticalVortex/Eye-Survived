@@ -60,11 +60,18 @@ func _physics_process(_delta: float) -> void:
 			var player_position = $Player.position
 	
 			# Makes the mob look at the player.
-			mob.look_at(player_position)
+			# mob.look_at(player_position)
 
 			# Calculate the direction vector from the mob to the player.
 			var direction_vector = (player_position - mob.position).normalized()
+			
+			# Check the movement direction and flip the animation
+			if direction_vector.x < 0:  # Moving left
+				mob.sprite.flip_h = true
+			elif direction_vector.x > 0:  # Moving right
+				mob.sprite.flip_h = false
 
+			
 			# Choose the velocity for the mob.
 			var speed = randf_range(150.0, 250.0)
 			if time > 45:
