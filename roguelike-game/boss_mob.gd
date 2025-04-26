@@ -6,7 +6,9 @@ func _ready() -> void:
 	super._ready()
 	health = 20 + (5 * Global.stage)
 	$AnimatedSprite2D.scale = Vector2(size, size)
-	$CollisionPolygon2D.scale = Vector2(size, size)
+	$CollisionShape2D.scale = Vector2(size, size)
+	$CollisionShape2D2.scale = Vector2(size, size)
+	$CollisionShape2D3.scale = Vector2(size, size)
 
 # Overrides Mob's Hit
 func hit() -> void:
