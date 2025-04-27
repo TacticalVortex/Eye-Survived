@@ -1,6 +1,6 @@
 # Roguelike-Game
 
-![image](https://github.com/user-attachments/assets/46d1056f-c9d8-4672-a251-24052fd2c8ad)
+![RoguelikeGame](https://github.com/user-attachments/assets/da302288-c2c0-4633-9d0c-7aead91f2a1a)
 
 This is a small roguelike game about defeating enemies and bosses to gain score
 
