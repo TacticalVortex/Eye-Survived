@@ -160,6 +160,8 @@ func _on_body_entered(body):
 func player_death():
 	hide() # Player disappears after being hit.
 	stop_timers()
+	stop_ult()
+	stop_dash()
 	can_fire = false
 	can_ult = false
 	can_dash = false

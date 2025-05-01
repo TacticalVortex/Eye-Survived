@@ -12,6 +12,7 @@ func _ready() -> void:
 	sprite.play(mob_types[randi_range(0,mob_types.size() - 1) ])
 	if Global.stage > 3:
 		if randi_range(0,100)  < (Global.stage * 2):
+			sprite.modulate = Color(0.89, 0.757, 0.757)
 			health = 1
 			$AnimatedSprite2D.scale = Vector2(1.05, 1.05)
 			$CollisionShape2D.scale = Vector2(1.05, 1.05)

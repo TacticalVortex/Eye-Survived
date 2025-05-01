@@ -8,6 +8,7 @@ radius = 4.0
 height = 18.0
 
 [node name="Bullet" type="RigidBody2D"]
+collision_mask = 2
 mass = 0.001
 script = ExtResource("1_at5gb")
 
