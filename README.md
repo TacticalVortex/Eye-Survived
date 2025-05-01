@@ -4,6 +4,6 @@
 
 This is a small roguelike game about defeating enemies and bosses to gain score
 
-Pick up drops to increase shooting speed and get a better score!
+Pick up drops to increase shooting speed and get a better score, or survive as long as you can to get a new best time!
 
 godotengine.org/license
