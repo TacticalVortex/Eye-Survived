@@ -1,4 +1,4 @@
-# Roguelike-Game
+# Eye Survived
 
 ![RoguelikeGame](https://github.com/user-attachments/assets/da302288-c2c0-4633-9d0c-7aead91f2a1a)
 
