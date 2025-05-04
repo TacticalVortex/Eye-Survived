@@ -262,3 +262,6 @@ func toggle_music():
 	elif Global.music_on and is_paused:
 		$Music.play()
 		$Music.stream_paused = true
+
+func change_music_volume(volume):
+	$Music.volume_db = volume

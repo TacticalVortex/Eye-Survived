@@ -4,6 +4,7 @@ signal toggles_back
 signal highscore_button
 signal fps_button
 signal music_button
+signal music_volume(volume)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -34,5 +35,10 @@ func _on_music_button_pressed() -> void:
 	music_button.emit()
 	if Global.music_on:
 		$MusicLabel.text = "Music: On"
+		$MusicSlider.show()
 	else:
+		$MusicSlider.hide()
 		$MusicLabel.text = "Music: Off"
+
+func _on_music_slider_value_changed(value):
+	music_volume.emit(value)

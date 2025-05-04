@@ -101,4 +101,5 @@ stream = ExtResource("6_tiujd")
 [connection signal="fps_button" from="Settings" to="." method="toggle_fps"]
 [connection signal="highscore_button" from="Settings" to="." method="toggle_highscores"]
 [connection signal="music_button" from="Settings" to="." method="toggle_music"]
+[connection signal="music_volume" from="Settings" to="." method="change_music_volume"]
 [connection signal="toggles_back" from="Settings" to="." method="toggles_back"]
