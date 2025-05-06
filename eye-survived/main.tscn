@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bkc78kubbi8rm"]
+[gd_scene load_steps=16 format=4 uid="uid://bkc78kubbi8rm"]
 
 [ext_resource type="Script" uid="uid://dbvqy7ar45w62" path="res://main.gd" id="1_er6w5"]
 [ext_resource type="PackedScene" uid="uid://76oj4onm82gy" path="res://mob.tscn" id="2_0call"]
@@ -26,6 +26,10 @@ sampling_rate = 44100.0
 [sub_resource type="AudioStreamOggVorbis" id="AudioStreamOggVorbis_vhsds"]
 packet_sequence = SubResource("OggPacketSequence_yeifm")
 loop = true
+
+[sub_resource type="Environment" id="Environment_efxa6"]
+background_mode = 3
+adjustment_enabled = true
 
 [node name="Main" type="Node"]
 script = ExtResource("1_er6w5")
@@ -80,6 +84,9 @@ stream = ExtResource("6_tiujd")
 
 [node name="Settings" parent="." instance=ExtResource("11_efxa6")]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_efxa6")
+
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="TimeTimer" to="." method="_on_time_timer_timeout"]
@@ -98,6 +105,7 @@ stream = ExtResource("6_tiujd")
 [connection signal="quit_game" from="Menu" to="." method="quit_game"]
 [connection signal="toggles" from="Menu" to="." method="toggles"]
 [connection signal="back_button" from="Controls" to="." method="back_button"]
+[connection signal="brightness" from="Settings" to="." method="change_brightness"]
 [connection signal="fps_button" from="Settings" to="." method="toggle_fps"]
 [connection signal="highscore_button" from="Settings" to="." method="toggle_highscores"]
 [connection signal="music_button" from="Settings" to="." method="toggle_music"]

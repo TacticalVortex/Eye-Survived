@@ -265,3 +265,11 @@ func toggle_music():
 
 func change_music_volume(volume):
 	$Music.volume_db = volume
+	
+func change_brightness(brightness):
+	$WorldEnvironment.environment.adjustment_brightness = brightness
+	for layer in self.get_children():
+		if layer is CanvasLayer:
+			for label in layer.get_children():
+				if label is Label or label is Button or label is HSlider:
+					label.self_modulate = Color(1, 1, 1) * brightness

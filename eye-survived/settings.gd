@@ -5,6 +5,7 @@ signal highscore_button
 signal fps_button
 signal music_button
 signal music_volume(volume)
+signal brightness(brightness)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -42,3 +43,6 @@ func _on_music_button_pressed() -> void:
 
 func _on_music_slider_value_changed(value):
 	music_volume.emit(value)
+
+func _on_brightness_slider_value_changed(value):
+	brightness.emit(value)

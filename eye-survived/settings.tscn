@@ -49,29 +49,29 @@ text = "Back"
 
 [node name="HighscoreButton" type="Button" parent="."]
 offset_left = 75.0
-offset_top = 175.0
+offset_top = 130.0
 offset_right = 525.0
-offset_bottom = 265.0
+offset_bottom = 210.0
 theme_override_fonts/font = ExtResource("1_3dd4s")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 35
 text = "Toggle Highscores"
 
 [node name="FPSButton" type="Button" parent="."]
 offset_left = 75.0
-offset_top = 300.0
+offset_top = 230.0
 offset_right = 525.0
-offset_bottom = 390.0
+offset_bottom = 310.0
 theme_override_fonts/font = ExtResource("1_3dd4s")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 35
 text = "Toggle FPS"
 
 [node name="MusicButton" type="Button" parent="."]
 offset_left = 75.0
-offset_top = 425.0
+offset_top = 330.0
 offset_right = 525.0
-offset_bottom = 515.0
+offset_bottom = 410.0
 theme_override_fonts/font = ExtResource("1_3dd4s")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 35
 text = "Toggle Music"
 
 [node name="ScoreLabel" type="Label" parent="."]
@@ -81,16 +81,16 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -530.0
-offset_top = -545.0
+offset_top = -590.0
 offset_right = -80.0
-offset_bottom = -455.0
+offset_bottom = -510.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("1_3dd4s")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Highscores: On"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -102,16 +102,16 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -530.0
-offset_top = -420.0
+offset_top = -490.0
 offset_right = -80.0
-offset_bottom = -330.0
+offset_bottom = -410.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("1_3dd4s")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "FPS: On"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -123,32 +123,64 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -530.0
-offset_top = -295.0
+offset_top = -390.0
 offset_right = -80.0
-offset_bottom = -205.0
+offset_bottom = -310.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("1_3dd4s")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Music: On"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BrightnessLabel" type="Label" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -530.0
+offset_top = -280.0
+offset_right = -80.0
+offset_bottom = -200.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_3dd4s")
+theme_override_font_sizes/font_size = 40
+text = "Brightness"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MusicSlider" type="HSlider" parent="."]
 offset_left = 750.0
-offset_top = 475.0
+offset_top = 375.0
 offset_right = 1200.0
-offset_bottom = 565.0
+offset_bottom = 455.0
 min_value = -26.0
 max_value = 12.0
 step = 2.0
 
-[connection signal="pressed" from="BackButton" to="." method="_on_quit_button_pressed"]
+[node name="BrightnessSlider" type="HSlider" parent="."]
+offset_left = 750.0
+offset_top = 485.0
+offset_right = 1200.0
+offset_bottom = 565.0
+min_value = 0.3
+max_value = 3.0
+step = 0.1
+value = 1.0
+
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="HighscoreButton" to="." method="_on_highscore_button_pressed"]
 [connection signal="pressed" from="FPSButton" to="." method="_on_fps_button_pressed"]
 [connection signal="pressed" from="MusicButton" to="." method="_on_music_button_pressed"]
 [connection signal="value_changed" from="MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="BrightnessSlider" to="." method="_on_brightness_slider_value_changed"]
