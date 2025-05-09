@@ -45,4 +45,5 @@ func _on_music_slider_value_changed(value):
 	music_volume.emit(value)
 
 func _on_brightness_slider_value_changed(value):
+	$BrightnessLabel.text = "Brightness: " + str(value)
 	brightness.emit(value)
