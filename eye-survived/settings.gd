@@ -35,16 +35,16 @@ func _on_fps_button_pressed() -> void:
 func _on_music_button_pressed() -> void:
 	music_button.emit()
 	if Global.music_on:
-		$MusicLabel.text = "Music: " + str(($MusicSlider.value + 28) * 2.5)
+		$MusicLabel.text = "Music: " + str(int(($MusicSlider.value + 28) * 2.5))
 		$MusicSlider.show()
 	else:
 		$MusicSlider.hide()
 		$MusicLabel.text = "Music: Off"
 
 func _on_music_slider_value_changed(value):
-	$MusicLabel.text = "Music: " + str((value + 28) * 2.5)
+	$MusicLabel.text = "Music: " + str(int((value + 28) * 2.5))
 	music_volume.emit(value)
 
 func _on_brightness_slider_value_changed(value):
-	$BrightnessLabel.text = "Brightness: " + str(value)
+	$BrightnessLabel.text = "Brightness: " + str(int(value * 5))
 	brightness.emit(value)
