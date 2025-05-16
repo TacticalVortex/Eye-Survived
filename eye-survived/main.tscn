@@ -70,6 +70,7 @@ curve = SubResource("Curve2D_v8uxb")
 [node name="Music" type="AudioStreamPlayer" parent="."]
 process_mode = 1
 stream = SubResource("AudioStreamOggVorbis_vhsds")
+volume_db = -8.0
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_tiujd")

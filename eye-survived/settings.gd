@@ -60,9 +60,9 @@ func _on_default_button_pressed():
 	if !Global.music_on:
 		music_button.emit()
 		$MusicSlider.show()
-	$MusicLabel.text = "Music: " + str(70)
-	music_volume.emit(0.0)
-	$MusicSlider.value = 0.0
+	$MusicLabel.text = "Music: " + str(50)
+	music_volume.emit(-8.0)
+	$MusicSlider.value = -8.0
 	$BrightnessLabel.text = "Brightness: " + str(5)
 	brightness.emit(1.0)
 	$BrightnessSlider.value = 1.0
