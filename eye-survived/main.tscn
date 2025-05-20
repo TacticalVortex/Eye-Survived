@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bkc78kubbi8rm"]
+[gd_scene load_steps=17 format=4 uid="uid://bkc78kubbi8rm"]
 
 [ext_resource type="Script" uid="uid://dbvqy7ar45w62" path="res://main.gd" id="1_er6w5"]
 [ext_resource type="PackedScene" uid="uid://76oj4onm82gy" path="res://mob.tscn" id="2_0call"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ifrheix1e8td" path="res://menu.tscn" id="8_f8741"]
 [ext_resource type="PackedScene" uid="uid://biqahnw6lv4fx" path="res://controls.tscn" id="9_73ba2"]
 [ext_resource type="PackedScene" uid="uid://dqqlue8yw5xpn" path="res://settings.tscn" id="11_efxa6"]
+[ext_resource type="PackedScene" uid="uid://0xdnpyx5q4gu" path="res://cursor.tscn" id="12_dg77c"]
 
 [sub_resource type="Curve2D" id="Curve2D_v8uxb"]
 _data = {
@@ -45,6 +46,8 @@ grow_vertical = 2
 color = Color(0.17099, 0.341912, 0.608972, 1)
 
 [node name="Player" parent="." instance=ExtResource("2_ymm1k")]
+
+[node name="Cursor" parent="." instance=ExtResource("12_dg77c")]
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 1.5
