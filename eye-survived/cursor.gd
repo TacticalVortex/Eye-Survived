@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal input(device)
+
 @onready var cursor = $Sprite2D
 var cursor_speed = 800
 
@@ -13,3 +15,9 @@ func _process(delta):
 		) * cursor_speed * delta
 
 	cursor.global_position += move_vector
+
+func _input(event):
+	if event is InputEventMouseMotion or event is InputEventMouseButton:
+		input.emit("mouse")
+	elif event is InputEventJoypadMotion or event is InputEventJoypadButton:
+		input.emit("controller")

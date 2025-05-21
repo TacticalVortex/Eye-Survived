@@ -48,6 +48,8 @@ color = Color(0.17099, 0.341912, 0.608972, 1)
 [node name="Player" parent="." instance=ExtResource("2_ymm1k")]
 
 [node name="Cursor" parent="." instance=ExtResource("12_dg77c")]
+offset = Vector2(640, 360)
+transform = Transform2D(1, 0, 0, 1, 640, 360)
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 1.5
@@ -92,6 +94,7 @@ stream = ExtResource("6_tiujd")
 environment = SubResource("Environment_efxa6")
 
 [connection signal="hit" from="Player" to="." method="game_over"]
+[connection signal="input" from="Cursor" to="." method="change_controls"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="TimeTimer" to="." method="_on_time_timer_timeout"]
 [connection signal="timeout" from="TotalTimeTimer" to="." method="_on_total_time_timer_timeout"]
