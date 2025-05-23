@@ -89,7 +89,7 @@ func change_controls(device):
 	if device == "mouse":
 		$Cursor.hide()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	elif device == "controller":
+	elif device == "controller" and Global.controller_on:
 		$Cursor.show()
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -272,6 +272,9 @@ func toggle_music():
 	elif Global.music_on and is_paused:
 		$Music.play()
 		$Music.stream_paused = true
+
+func toggle_controller():
+	Global.controller_on = !Global.controller_on
 
 func change_music_volume(volume):
 	$Music.volume_db = volume

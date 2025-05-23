@@ -4,6 +4,7 @@ signal toggles_back
 signal highscore_button
 signal fps_button
 signal music_button
+signal controller_button
 signal music_volume(volume)
 signal brightness(brightness)
 
@@ -49,7 +50,6 @@ func _on_brightness_slider_value_changed(value):
 	$BrightnessLabel.text = "Brightness: " + str(int(value * 5))
 	brightness.emit(value)
 
-
 func _on_default_button_pressed():
 	if !Global.fps_visible:
 		fps_button.emit()
@@ -60,9 +60,19 @@ func _on_default_button_pressed():
 	if !Global.music_on:
 		music_button.emit()
 		$MusicSlider.show()
+	if Global.controller_on:
+		controller_button.emit()
+		$ControllerLabel.text = "Controller: Off"
 	$MusicLabel.text = "Music: " + str(50)
 	music_volume.emit(-8.0)
 	$MusicSlider.value = -8.0
 	$BrightnessLabel.text = "Brightness: " + str(5)
 	brightness.emit(1.0)
 	$BrightnessSlider.value = 1.0
+
+func _on_controller_button_pressed():
+	controller_button.emit()
+	if Global.controller_on:
+		$ControllerLabel.text = "Controller: On"
+	else:
+		$ControllerLabel.text = "Controller: Off"
