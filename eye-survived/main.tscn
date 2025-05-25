@@ -113,7 +113,6 @@ environment = SubResource("Environment_efxa6")
 [connection signal="toggles" from="Menu" to="." method="toggles"]
 [connection signal="back_button" from="Controls" to="." method="back_button"]
 [connection signal="brightness" from="Settings" to="." method="change_brightness"]
-[connection signal="controller_button" from="Settings" to="." method="toggle_controller"]
 [connection signal="fps_button" from="Settings" to="." method="toggle_fps"]
 [connection signal="highscore_button" from="Settings" to="." method="toggle_highscores"]
 [connection signal="music_button" from="Settings" to="." method="toggle_music"]

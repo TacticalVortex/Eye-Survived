@@ -273,9 +273,6 @@ func toggle_music():
 		$Music.play()
 		$Music.stream_paused = true
 
-func toggle_controller():
-	Global.controller_on = !Global.controller_on
-
 func change_music_volume(volume):
 	$Music.volume_db = volume
 	
