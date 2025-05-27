@@ -9,7 +9,7 @@ func _ready():
 	pass
 
 func _process(delta):
-	var move_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var move_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down", 0.3)
 
 	if move_vector.length() > 0:
 		move_vector = move_vector.normalized() * cursor_speed * delta
