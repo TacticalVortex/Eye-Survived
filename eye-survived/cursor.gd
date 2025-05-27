@@ -3,16 +3,13 @@ extends CanvasLayer
 signal input(device)
 
 @onready var cursor = $Sprite2D
-var cursor_speed = 500
+var cursor_speed = 600
 
 func _ready():
 	pass
 
 func _process(delta):
-	var move_vector = Vector2(
-	Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-	Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
-		)
+	var move_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
 	if move_vector.length() > 0:
 		move_vector = move_vector.normalized() * cursor_speed * delta
