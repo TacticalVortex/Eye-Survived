@@ -94,7 +94,6 @@ stream = ExtResource("6_tiujd")
 environment = SubResource("Environment_efxa6")
 
 [connection signal="hit" from="Player" to="." method="game_over"]
-[connection signal="input" from="Cursor" to="." method="change_controls"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="TimeTimer" to="." method="_on_time_timer_timeout"]
 [connection signal="timeout" from="TotalTimeTimer" to="." method="_on_total_time_timer_timeout"]
