@@ -24,7 +24,7 @@ var fps_visible = true
 # Global variable for music toggle
 var music_on = true
 
-#  Global variable for controller toggle
+# Global variable for controller toggle
 var controller_on = false
 
 # Called when the node enters the scene tree for the first time.
