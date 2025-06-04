@@ -27,6 +27,12 @@ var music_on = true
 # Global variable for controller toggle
 var controller_on = false
 
+# Global variable for current input device
+var current_device = "mouse"
+
+# Global variable for being in game
+var playing_game = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

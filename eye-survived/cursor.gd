@@ -2,6 +2,12 @@ extends CanvasLayer
 
 @onready var cursor = $Sprite2D
 var cursor_speed = 400
+var moving_controller = false
+var move_vector
+var move_x
+var move_y
+
+signal input(device)
 
 func _ready():
 	pass
@@ -23,10 +29,18 @@ func _process(delta):
 		Input.parse_input_event(release_event)
 
 	if Global.controller_on:
-		var move_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down", 0.5)
+		moving_controller = true
+		if !Global.playing_game:
+			move_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down", 0.5)
+		elif Global.playing_game:
+			move_vector = Input.get_vector("joystick_left", "joystick_right", "joystick_up", "joystick_down", 0.5)
 		if move_vector.length() > 0:
-			var move_x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-			var move_y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+			if !Global.playing_game:
+				move_x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+				move_y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+			if Global.playing_game:
+				move_x = Input.get_action_strength("joystick_right") - Input.get_action_strength("joystick_left")
+				move_y = Input.get_action_strength("joystick_down") - Input.get_action_strength("joystick_up")
 
 			move_vector = Vector2(move_x, move_y)
 
@@ -42,3 +56,10 @@ func _process(delta):
 			new_mouse_pos.y = clamp(new_mouse_pos.y, 0, 720)
 
 			get_viewport().warp_mouse(new_mouse_pos)
+		moving_controller = false
+
+func _input(event):
+	if (event is InputEventMouseMotion or event is InputEventMouseButton) and !moving_controller:
+		input.emit("mouse")
+	elif event is InputEventJoypadMotion or event is InputEventJoypadButton:
+		input.emit("controller")

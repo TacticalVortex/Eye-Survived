@@ -25,8 +25,10 @@ func _physics_process(_delta: float) -> void:
 		is_paused = !is_paused
 		get_tree().paused = is_paused
 		if is_paused:
+			Global.playing_game = false
 			pause_menu()
 		else:
+			Global.playing_game = true
 			resume_game()
 
 	if time == 60:
@@ -84,6 +86,13 @@ func _physics_process(_delta: float) -> void:
 func play_game():
 	$HUD.visible = true
 	$Menu.visible = false
+
+func change_controls(device):
+	if in_game and !is_paused:
+		if device == "mouse":
+			Global.current_device = "mouse"
+		elif device == "controller":
+			Global.current_device = "controller"
 
 func controls():
 	if not in_game:
@@ -179,6 +188,7 @@ func quit_game():
 
 func game_over():
 	in_game = false
+	Global.playing_game = false
 	$TimeTimer.stop()
 	$TotalTimeTimer.stop()
 	$MobTimer.stop()
@@ -189,6 +199,7 @@ func game_over():
 
 func new_game():
 	in_game = true
+	Global.playing_game = true
 	time = 0
 	total_time = 0
 	score = 0
