@@ -31,9 +31,9 @@ func _process(delta):
 	if Global.controller_on:
 		moving_controller = true
 		if !Global.playing_game:
-			move_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down", 0.5)
+			move_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down", 0.4)
 		elif Global.playing_game:
-			move_vector = Input.get_vector("joystick_left", "joystick_right", "joystick_up", "joystick_down", 0.5)
+			move_vector = Input.get_vector("joystick_left", "joystick_right", "joystick_up", "joystick_down", 0.4)
 		if move_vector.length() > 0:
 			if !Global.playing_game:
 				move_x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
