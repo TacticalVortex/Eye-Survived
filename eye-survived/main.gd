@@ -21,8 +21,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
-	if ((Input.is_action_just_pressed("pause") and Global.current_device == "mouse") 
-	or (Input.is_action_just_pressed("pause") and Global.current_device == "controller" and Global.controller_on) 
+	if (Input.is_action_just_pressed("pause")
+	or (Input.is_action_just_pressed("controller_pause") and Global.current_device == "controller" and Global.controller_on) 
 	and $TimeTimer.time_left > 0):
 		is_paused = !is_paused
 		get_tree().paused = is_paused
@@ -90,11 +90,11 @@ func play_game():
 	$Menu.visible = false
 
 func change_controls(device):
-	if in_game and !is_paused:
-		if device == "mouse":
-			Global.current_device = "mouse"
-		elif device == "controller":
-			Global.current_device = "controller"
+	#if in_game and !is_paused:
+	if device == "mouse":
+		Global.current_device = "mouse"
+	elif device == "controller":
+		Global.current_device = "controller"
 
 func controls():
 	if not in_game:
