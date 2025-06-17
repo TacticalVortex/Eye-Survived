@@ -8,7 +8,7 @@ var raw_x
 var raw_y
 var move_x
 var move_y
-var deadzone = 0.4
+var deadzone = 0.25
 
 signal input(device)
 
