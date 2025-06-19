@@ -27,10 +27,8 @@ func _physics_process(_delta: float) -> void:
 		is_paused = !is_paused
 		get_tree().paused = is_paused
 		if is_paused:
-			Global.playing_game = false
 			pause_menu()
 		else:
-			Global.playing_game = true
 			resume_game()
 
 	if time == 60:
@@ -134,6 +132,7 @@ func pause_menu():
 	$MobTimer.stop()
 	$HUD.visible = false
 	$Pause.visible = true
+	Global.playing_game = false
 
 func main_menu():
 	get_tree().paused = !is_paused
@@ -161,6 +160,7 @@ func resume_game():
 	$MobTimer.start()
 	$HUD.visible = true
 	$Pause.visible = false
+	Global.playing_game = true
 
 func next_stage():
 	get_tree().paused = !is_paused

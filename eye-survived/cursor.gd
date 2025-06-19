@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @onready var cursor = $Sprite2D
-var cursor_speed = 400
+var cursor_speed = 275
 var moving_controller = false
 var move_vector
 var raw_x
@@ -46,6 +46,11 @@ func _process(delta):
 			raw_y = 0.0
 		move_x = raw_x
 		move_y = raw_y
+
+		if move_x > 0.25:
+			move_x *= 1.9
+		if move_y > 0.25:
+			move_y *= 1.9
 
 		move_vector = Vector2(move_x, move_y)
 
