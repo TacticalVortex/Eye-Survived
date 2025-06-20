@@ -33,6 +33,12 @@ var current_device = "mouse"
 # Global variable for being in game
 var playing_game = false
 
+# Global variable for highscore
+var highscore = 0
+
+# Global variable for best time
+var best_time = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

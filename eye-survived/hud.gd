@@ -4,12 +4,10 @@ extends CanvasLayer
 signal start_game
 signal quit_game
 
-var high_score = 0
-var best_time = 0
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	$BestTimeLabel.text = "Best Time: " + str(Global.best_time)
+	$HighScoreLabel.text = "Highscore: " + str(Global.highscore)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -46,9 +44,9 @@ func update_time(time):
 	$TimeLabel.text = "Time: " + str(time)
 
 func update_total_time(time):
-	if time > best_time:
-		best_time = time
-		$BestTimeLabel.text = "Best Time: " + str(best_time)
+	if time > Global.best_time:
+		Global.best_time = time
+		$BestTimeLabel.text = "Best Time: " + str(Global.best_time)
 
 func update_stage(stage):
 	$StageLabel.text = "Stage: " + str(stage)
@@ -58,9 +56,9 @@ func update_health(health):
 
 func update_score(score):
 	$ScoreLabel.text = "Score: " + str(score)
-	if score > high_score:
-		high_score = score
-		$HighScoreLabel.text = "Highscore: " + str(high_score)
+	if score > Global.highscore:
+		Global.highscore = score
+		$HighScoreLabel.text = "Highscore: " + str(Global.highscore)
 
 func toggle_scores():
 	if !Global.highscore_visible:

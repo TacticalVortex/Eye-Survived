@@ -50,13 +50,17 @@ func _physics_process(delta):
 		$Gunshot.pitch_scale = randf_range(0.92, 1.08)
 		$Gunshot.play()
 	
-	if Input.is_action_pressed("move_right"):
+	if (Input.is_action_pressed("move_right") or 
+	(Input.is_action_pressed("right_joystick") and Global.controller_on)):
 		velocity.x += 1
-	if Input.is_action_pressed("move_left"):
+	if (Input.is_action_pressed("move_left") or 
+	(Input.is_action_pressed("left_joystick") and Global.controller_on)):
 		velocity.x -= 1
-	if Input.is_action_pressed("move_down"):
+	if (Input.is_action_pressed("move_down") or 
+	(Input.is_action_pressed("down_joystick") and Global.controller_on)):
 		velocity.y += 1
-	if Input.is_action_pressed("move_up"):
+	if (Input.is_action_pressed("move_up") or 
+	(Input.is_action_pressed("up_joystick") and Global.controller_on)):
 		velocity.y -= 1
 
 	if Input.is_action_just_pressed("dash") and not is_dashing and can_dash:
