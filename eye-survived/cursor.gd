@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @onready var cursor = $Sprite2D
-var cursor_speed = 275
+var cursor_speed = 265
 var moving_controller = false
 var move_vector
 var raw_x

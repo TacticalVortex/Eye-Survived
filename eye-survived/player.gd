@@ -90,7 +90,8 @@ func _physics_process(delta):
 	
 	$GunTimer.wait_time = fire_rate
 	
-	if Input.is_action_pressed("shoot") and can_fire and not in_ultimate:
+	if ((Input.is_action_pressed("shoot") or (Input.is_action_pressed("controller_shoot")
+	and Global.controller_on)) and can_fire and not in_ultimate):
 		make_bullet()
 		can_fire = false
 		$GunTimer.start()
