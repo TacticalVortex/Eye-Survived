@@ -39,6 +39,9 @@ var highscore = 0
 # Global variable for best time
 var best_time = 0
 
+# Global variable for monsters on screen
+var total_monsters = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

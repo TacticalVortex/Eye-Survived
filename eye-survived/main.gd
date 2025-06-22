@@ -21,6 +21,7 @@ func _ready():
 	Global.playing_game = false
 	get_tree().paused = false
 	is_paused = false
+	Global.total_monsters = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
@@ -169,6 +170,7 @@ func next_stage():
 	$Stage.visible = false
 	if fmod(Global.stage, 2) == 0:
 		summon_boss()
+		Global.total_monsters += 1
 
 func summon_boss():
 	var boss_mob = boss_mob_scene.instantiate()
@@ -212,21 +214,23 @@ func new_game():
 		$Music.play()
 
 func _on_mob_timer_timeout():
-	# Create a new instance of the Mob scene.
-	var mob = mob_scene.instantiate()
+	if Global.total_monsters < 75:
+		# Create a new instance of the Mob scene.
+		var mob = mob_scene.instantiate()
 
-	# Choose a random location on Path2D.
-	var mob_spawn_location = $MobPath/MobSpawnLocation
-	mob_spawn_location.progress_ratio = randf()
+		# Choose a random location on Path2D.
+		var mob_spawn_location = $MobPath/MobSpawnLocation
+		mob_spawn_location.progress_ratio = randf()
 
-	# Set the mob's position to a random location.
-	mob.position = mob_spawn_location.position
-	
-	# Add the mob to the array of mobs
-	mobs.append(mob)
+		# Set the mob's position to a random location.
+		mob.position = mob_spawn_location.position
+		
+		# Add the mob to the array of mobs
+		mobs.append(mob)
+		Global.total_monsters += 1
 
-	# Spawn the mob by adding it to the Main scene.
-	add_child(mob)
+		# Spawn the mob by adding it to the Main scene.
+		add_child(mob)
 
 func _on_time_timer_timeout():
 	time += 1

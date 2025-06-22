@@ -25,6 +25,7 @@ func hit() -> void:
 	else:
 		SoundManager.set_volume(1.0)
 		SoundManager.play("res://art/enemy_death.ogg")
+		Global.total_monsters -= 1
 		if randi_range(0, 100)< 6:
 			drop_item()
 		queue_free()
