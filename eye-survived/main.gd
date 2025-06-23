@@ -170,7 +170,7 @@ func next_stage():
 	$Stage.visible = false
 	if fmod(Global.stage, 2) == 0:
 		summon_boss()
-		Global.total_monsters += 1
+		Global.total_monsters += 10
 
 func summon_boss():
 	var boss_mob = boss_mob_scene.instantiate()

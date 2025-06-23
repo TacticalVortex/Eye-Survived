@@ -17,6 +17,6 @@ func hit() -> void:
 	else:
 		SoundManager.set_volume(2.0)
 		SoundManager.play("res://art/enemy_death.ogg")
-		Global.total_monsters -= 1
+		Global.total_monsters -= 10
 		drop_item()
 		call_deferred("queue_free")
