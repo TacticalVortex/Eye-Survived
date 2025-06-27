@@ -8,7 +8,22 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if Global.current_device == "mouse":
+		$KeysLabel.text = "W
+		A   S   D
+		(or arrow keys)"
+		$KeysLabel2.text = "Shoot - Left Click
+		Dash - Shift or
+		Right Click
+		Ultimate - Space"
+	elif Global.current_device == "controller":
+		$KeysLabel.text = "Left Joystick
+		Cursor
+		Right Joystick"
+		$KeysLabel2.text = "Shoot - Right Trigger
+		Dash - B or
+		Left Joystick
+		Ultimate - Y"
 
 func _on_back_button_pressed() -> void:
 	back_button.emit()
