@@ -91,12 +91,6 @@ func play_game():
 	$HUD.visible = true
 	$Menu.visible = false
 
-func change_controls(device):
-	if device == "mouse":
-		Global.current_device = "mouse"
-	elif device == "controller":
-		Global.current_device = "controller"
-
 func controls():
 	if not in_game:
 		$Controls.visible = true

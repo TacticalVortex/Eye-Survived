@@ -10,13 +10,12 @@ var move_x
 var move_y
 var deadzone = 0.25
 
-signal input(device)
-
 func _ready():
 	pass
 
 func _process(delta):
 	if Input.is_action_just_pressed("controller_click") and Global.controller_on:
+		moving_controller = true
 		var click_event = InputEventMouseButton.new()
 		click_event.button_index = MOUSE_BUTTON_LEFT
 		click_event.pressed = true
@@ -30,20 +29,22 @@ func _process(delta):
 		release_event.pressed = false
 		release_event.position = get_viewport().get_mouse_position()
 		Input.parse_input_event(release_event)
+		call_deferred("end_controller_move")
 
-	if Global.controller_on:
+	if !Global.playing_game:
+		raw_x = Input.get_joy_axis(0, JOY_AXIS_LEFT_X)
+		raw_y = Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)
+	else:
+		raw_x = Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)
+		raw_y = Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
+
+	if abs(raw_x) < deadzone:
+		raw_x = 0.0
+	if abs(raw_y) < deadzone:
+		raw_y = 0.0
+
+	if Global.controller_on and (raw_x != 0 or raw_y != 0):
 		moving_controller = true
-		if !Global.playing_game:
-			raw_x = Input.get_joy_axis(0, JOY_AXIS_LEFT_X)
-			raw_y = Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)
-		else:
-			raw_x = Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)
-			raw_y = Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
-
-		if abs(raw_x) < deadzone:
-			raw_x = 0.0
-		if abs(raw_y) < deadzone:
-			raw_y = 0.0
 		move_x = raw_x
 		move_y = raw_y
 
@@ -64,10 +65,13 @@ func _process(delta):
 			new_mouse_pos.y = clamp(new_mouse_pos.y, 0, 720)
 
 		get_viewport().warp_mouse(new_mouse_pos)
-		moving_controller = false
+		call_deferred("end_controller_move")
 
 func _input(event):
-	if (event is InputEventMouseMotion or event is InputEventMouseButton) and !moving_controller:
-		input.emit("mouse")
-	elif event is InputEventJoypadMotion or event is InputEventJoypadButton:
-		input.emit("controller")
+	if event is InputEventJoypadMotion or event is InputEventJoypadButton:
+		Global.current_device = "controller"
+	elif (event is InputEventMouseMotion or event is InputEventMouseButton) and (raw_x == 0 and raw_y == 0):
+		Global.current_device = "mouse"
+
+func end_controller_move():
+	moving_controller = false
