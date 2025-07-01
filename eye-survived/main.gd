@@ -176,9 +176,6 @@ func summon_boss():
 	mobs.append(boss_mob)
 	add_child(boss_mob)
 
-func quit_game():
-	get_tree().quit()
-
 func game_over():
 	in_game = false
 	Global.playing_game = false

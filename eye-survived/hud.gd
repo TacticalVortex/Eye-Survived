@@ -2,7 +2,6 @@ extends CanvasLayer
 
 # Notifies `Main` node that the button has been pressed
 signal start_game
-signal quit_game
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -83,4 +82,4 @@ func _on_message_timer_timeout():
 	$Message.hide()
 
 func _on_quit_button_pressed() -> void:
-	quit_game.emit()
+	get_tree().quit()
