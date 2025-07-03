@@ -99,6 +99,7 @@ environment = SubResource("Environment_efxa6")
 [connection signal="timeout" from="TimeTimer" to="." method="_on_time_timer_timeout"]
 [connection signal="timeout" from="TotalTimeTimer" to="." method="_on_total_time_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="main_menu" from="HUD" to="." method="main_menu"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="controls" from="Pause" to="." method="controls"]
 [connection signal="main_menu" from="Pause" to="." method="main_menu"]

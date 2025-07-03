@@ -2,11 +2,13 @@ extends CanvasLayer
 
 # Notifies `Main` node that the button has been pressed
 signal start_game
+signal main_menu
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$BestTimeLabel.text = "Best Time: " + str(Global.best_time)
 	$HighScoreLabel.text = "Highscore: " + str(Global.highscore)
+	$MenuButton.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -36,8 +38,7 @@ func show_game_over():
 	$Message.show()
 	# Make a one-shot timer and wait for it to finish.
 	await get_tree().create_timer(1.0).timeout
-	$StartButton.show()
-	$QuitButton.show()
+	$MenuButton.show()
 	
 func update_time(time):
 	$TimeLabel.text = "Time: " + str(time)
@@ -83,3 +84,6 @@ func _on_message_timer_timeout():
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
+
+func _on_menu_button_pressed():
+	main_menu.emit()
