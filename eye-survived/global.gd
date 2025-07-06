@@ -25,7 +25,7 @@ var fps_visible = true
 var music_on = true
 
 # Global variable for controller toggle
-var controller_on = false
+var controller_on = true
 
 # Global variable for current input device
 var current_device = "mouse"

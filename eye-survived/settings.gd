@@ -59,9 +59,9 @@ func _on_default_button_pressed():
 	if !Global.music_on:
 		music_button.emit()
 		$MusicSlider.show()
-	if Global.controller_on:
-		Global.controller_on = !Global.controller_on
-		$ControllerLabel.text = "Controller: Off"
+	if !Global.controller_on:
+		Global.controller_on = true
+		$ControllerLabel.text = "Controller: On"
 	$MusicLabel.text = "Music: " + str(50)
 	music_volume.emit(-8.0)
 	$MusicSlider.value = -8.0
