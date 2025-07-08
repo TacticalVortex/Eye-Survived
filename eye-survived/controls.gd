@@ -4,11 +4,12 @@ signal back_button
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$ControllerLabel.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if Global.current_device == "mouse":
+		$ControllerLabel.hide()
 		$KeysLabel.text = "W
 		A   S   D
 		(or arrow keys)"
@@ -17,10 +18,11 @@ func _process(_delta: float) -> void:
 		Right Click
 		Ultimate - Space"
 	elif Global.current_device == "controller":
+		$ControllerLabel.show()
 		$KeysLabel.text = "Left Joystick
 		Cursor
 		Right Joystick"
-		$KeysLabel2.text = "Shoot - Right Trigger
+		$KeysLabel2.text = "Shoot - RT
 		Dash - B or
 		Left Joystick
 		Ultimate - Y"
