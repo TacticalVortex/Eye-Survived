@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://biqahnw6lv4fx"]
+[gd_scene load_steps=6 format=3 uid="uid://biqahnw6lv4fx"]
 
 [ext_resource type="Script" uid="uid://kvaq3yhkghi1" path="res://controls.gd" id="1_gf1nm"]
 [ext_resource type="FontFile" uid="uid://d3xret8asdeg6" path="res://fonts/Xolonium-Regular.ttf" id="2_t27u3"]
@@ -6,8 +6,11 @@
 [sub_resource type="InputEventAction" id="InputEventAction_qo8cm"]
 action = &"pause"
 
+[sub_resource type="InputEventAction" id="InputEventAction_xwvqn"]
+action = &"controller_back"
+
 [sub_resource type="Shortcut" id="Shortcut_xwvqn"]
-events = [SubResource("InputEventAction_qo8cm")]
+events = [SubResource("InputEventAction_qo8cm"), SubResource("InputEventAction_xwvqn")]
 
 [node name="Controls" type="CanvasLayer"]
 process_mode = 3
@@ -148,5 +151,5 @@ theme_override_font_sizes/font_size = 64
 shortcut = SubResource("Shortcut_xwvqn")
 text = "Back"
 
-[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
