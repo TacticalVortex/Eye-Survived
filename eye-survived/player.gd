@@ -130,11 +130,8 @@ func _on_body_entered(body):
 	if body.is_in_group("bullet"):
 		return
 	if body.is_in_group("chest"):
-		$ItemPickup.play()
 		body.queue_free()
-		increase_fire_rate()
-		if randi() % 100 < 10:
-			Global.health += 1
+		chest_pickup()
 		return
 	if is_dashing or in_ultimate:
 		body.hit()
@@ -190,6 +187,15 @@ func increase_fire_rate():
 	if fire_rate >= 0.08:
 		bullet_speed += 100
 		fire_rate -= 0.02
+
+func chest_pickup():
+	$ItemPickup.play()
+	increase_fire_rate()
+	if randi() % 100 < 10:
+		Global.health += 1
+	if randi() % 100 < 10:
+		can_ult = true
+		Global.ult_cooldown = true
 
 func make_bullet():
 	var bullet_instance = bullet.instantiate()
