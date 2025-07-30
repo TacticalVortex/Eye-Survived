@@ -53,6 +53,23 @@ theme_override_font_sizes/font_size = 64
 shortcut = SubResource("Shortcut_4hy44")
 text = "Game"
 
+[node name="StatsButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.0
+offset_top = 240.0
+offset_right = -290.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_mr5qk")
+theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_4hy44")
+text = "Stats"
+
 [node name="ControlButton" type="Button" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
@@ -102,9 +119,10 @@ theme_override_font_sizes/font_size = 64
 shortcut = SubResource("Shortcut_mae5d")
 text = "Quit"
 
-[connection signal="pressed" from="GameButton" to="." method="_on_game_button_pressed"]
 [connection signal="pressed" from="GameButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="ControlButton" to="." method="_on_control_button_pressed"]
+[connection signal="pressed" from="GameButton" to="." method="_on_game_button_pressed"]
+[connection signal="pressed" from="StatsButton" to="." method="_on_stats_button_pressed"]
 [connection signal="pressed" from="ControlButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="ControlButton" to="." method="_on_control_button_pressed"]
 [connection signal="pressed" from="TogglesButton" to="." method="_on_toggles_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

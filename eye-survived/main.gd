@@ -18,6 +18,7 @@ func _ready():
 	$Controls.hide()
 	$Settings.hide()
 	$Cursor.hide()
+	$Stats.hide()
 	Global.playing_game = false
 	get_tree().paused = false
 	is_paused = false
@@ -122,6 +123,15 @@ func toggles_back():
 	else:
 		$Settings.visible = false
 		$Pause.visible = true
+
+func stats():
+	$Stats.update_stats()
+	$Stats.visible = true
+	$Menu.visible = false
+
+func stats_back():
+	$Stats.visible = false
+	$Menu.visible = true
 
 func pause_menu():
 	$TimeTimer.stop()

@@ -3,6 +3,7 @@ extends CanvasLayer
 signal play_game
 signal controls
 signal toggles
+signal stats
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,3 +24,6 @@ func _on_quit_button_pressed() -> void:
 
 func _on_toggles_button_pressed() -> void:
 	toggles.emit()
+
+func _on_stats_button_pressed():
+	stats.emit()

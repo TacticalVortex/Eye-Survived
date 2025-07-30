@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bkc78kubbi8rm"]
+[gd_scene load_steps=18 format=4 uid="uid://bkc78kubbi8rm"]
 
 [ext_resource type="Script" uid="uid://dbvqy7ar45w62" path="res://main.gd" id="1_er6w5"]
 [ext_resource type="PackedScene" uid="uid://76oj4onm82gy" path="res://mob.tscn" id="2_0call"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://biqahnw6lv4fx" path="res://controls.tscn" id="9_73ba2"]
 [ext_resource type="PackedScene" uid="uid://dqqlue8yw5xpn" path="res://settings.tscn" id="11_efxa6"]
 [ext_resource type="PackedScene" uid="uid://0xdnpyx5q4gu" path="res://cursor.tscn" id="12_dg77c"]
+[ext_resource type="PackedScene" uid="uid://myyqgr6phk4m" path="res://stats.tscn" id="13_ycdy4"]
 
 [sub_resource type="Curve2D" id="Curve2D_v8uxb"]
 _data = {
@@ -91,6 +92,8 @@ stream = ExtResource("6_tiujd")
 
 [node name="Settings" parent="." instance=ExtResource("11_efxa6")]
 
+[node name="Stats" parent="." instance=ExtResource("13_ycdy4")]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_efxa6")
 
@@ -109,6 +112,7 @@ environment = SubResource("Environment_efxa6")
 [connection signal="next_stage" from="Stage" to="." method="next_stage"]
 [connection signal="controls" from="Menu" to="." method="controls"]
 [connection signal="play_game" from="Menu" to="." method="play_game"]
+[connection signal="stats" from="Menu" to="." method="stats"]
 [connection signal="toggles" from="Menu" to="." method="toggles"]
 [connection signal="back_button" from="Controls" to="." method="back_button"]
 [connection signal="brightness" from="Settings" to="." method="change_brightness"]
@@ -117,3 +121,4 @@ environment = SubResource("Environment_efxa6")
 [connection signal="music_button" from="Settings" to="." method="toggle_music"]
 [connection signal="music_volume" from="Settings" to="." method="change_music_volume"]
 [connection signal="toggles_back" from="Settings" to="." method="toggles_back"]
+[connection signal="stats_back" from="Stats" to="." method="stats_back"]
