@@ -10,6 +10,7 @@ func _physics_process(_delta: float) -> void:
 	for node in get_colliding_bodies():
 		if node.is_in_group("mobs"):
 			node.hit()
+			Global.total_kills += 1
 			queue_free()
 
 func _on_visible_on_screen_notifier_2d_screen_exited():

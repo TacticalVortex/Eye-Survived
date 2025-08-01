@@ -13,6 +13,7 @@ func _process(_delta: float) -> void:
 func update_stats():
 	$ScoreLabel.text = "Best Score: " + str(Global.highscore)
 	$TimeLabel.text = "Best Time: " + str(Global.best_time)
+	$TotalKillsLabel.text = "Total Kills: " + str(Global.total_kills)
 
 func _on_back_button_pressed() -> void:
 	stats_back.emit()
