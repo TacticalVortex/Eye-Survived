@@ -170,6 +170,8 @@ func next_stage():
 	$TotalTimeTimer.start()
 	$MobTimer.start()
 	Global.stage += 1
+	if Global.stage > Global.best_stage:
+		Global.best_stage = Global.stage
 	$HUD.visible = true
 	$Stage.visible = false
 	if fmod(Global.stage, 2) == 0:
@@ -204,6 +206,8 @@ func new_game():
 	total_time = 0
 	score = 0
 	Global.stage = 1
+	if Global.best_stage < 1:
+		Global.best_stage = 1
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 	$HUD.update_time(time)
