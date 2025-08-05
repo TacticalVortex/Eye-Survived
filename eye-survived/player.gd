@@ -190,6 +190,7 @@ func increase_fire_rate():
 
 func chest_pickup():
 	$ItemPickup.play()
+	Global.total_items += 1
 	increase_fire_rate()
 	if randi() % 100 < 10:
 		Global.health += 1

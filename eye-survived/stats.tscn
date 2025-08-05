@@ -87,6 +87,24 @@ text = "Total Kills: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TotalItemsLabel" type="Label" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 750.0
+offset_top = -245.0
+offset_right = 1230.0
+offset_bottom = -135.0
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_adv4l")
+theme_override_font_sizes/font_size = 64
+text = "Total Items: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="StageLabel" type="Label" parent="."]
 anchors_preset = 4
 anchor_top = 0.5
