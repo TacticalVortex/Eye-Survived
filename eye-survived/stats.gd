@@ -16,6 +16,7 @@ func update_stats():
 	$TotalKillsLabel.text = "Total Kills: " + str(Global.total_kills)
 	$StageLabel.text = "Best Stage: " + str(Global.best_stage)
 	$TotalItemsLabel.text = "Total Items: " + str(Global.total_items)
+	$TotalBossesLabel.text = "Total Bosses: " + str(Global.total_bosses)
 
 func _on_back_button_pressed() -> void:
 	stats_back.emit()
