@@ -101,6 +101,7 @@ func _physics_process(delta):
 
 func start_dash(velocity):
 	$Dash.play()
+	Global.total_dashes += 1
 	is_dashing = true
 	can_dash = false
 	Global.dash_cooldown = false

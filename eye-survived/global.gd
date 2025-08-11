@@ -54,6 +54,9 @@ var total_items = 0
 # Global variable for total bosses defeated
 var total_bosses = 0
 
+# Global variable for total dashes
+var total_dashes = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
