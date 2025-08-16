@@ -6,4 +6,6 @@ This is a small 2D roguelike game made in the Godot engine where your goal is to
 
 Pick up drops to increase shooting speed and get a better score, or survive as long as you can to get a new best time!
 
+Also check out the new stats screen to see all of your stats!
+
 godotengine.org/license
