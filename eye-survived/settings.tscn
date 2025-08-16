@@ -220,8 +220,8 @@ max_value = 3.0
 step = 0.2
 value = 1.0
 
-[connection signal="pressed" from="BackButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="HighscoreButton" to="." method="_on_highscore_button_pressed"]
 [connection signal="pressed" from="FPSButton" to="." method="_on_fps_button_pressed"]
 [connection signal="pressed" from="MusicButton" to="." method="_on_music_button_pressed"]
