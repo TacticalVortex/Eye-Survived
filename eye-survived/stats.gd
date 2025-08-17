@@ -11,13 +11,14 @@ func _process(_delta: float) -> void:
 	pass
 
 func update_stats():
-	$ScoreLabel.text = "Best Score: " + str(Global.highscore)
-	$TimeLabel.text = "Best Time: " + str(Global.best_time)
-	$TotalKillsLabel.text = "Total Kills: " + str(Global.total_kills)
-	$StageLabel.text = "Best Stage: " + str(Global.best_stage)
-	$TotalItemsLabel.text = "Total Items: " + str(Global.total_items)
-	$TotalBossesLabel.text = "Total Bosses: " + str(Global.total_bosses)
-	$TotalDashesLabel.text = "Total Dashes: " + str(Global.total_dashes)
+	$BestScoreLabel.text = "Score: " + str(Global.highscore)
+	$BestTimeLabel.text = "Time: " + str(Global.best_time)
+	$TotalKillsLabel.text = "Kills: " + str(Global.total_kills)
+	$BestStageLabel.text = "Stage: " + str(Global.best_stage)
+	$TotalItemsLabel.text = "Items: " + str(Global.total_items)
+	$TotalBossesLabel.text = "Bosses: " + str(Global.total_bosses)
+	$TotalDashesLabel.text = "Dashes: " + str(Global.total_dashes)
+	$TotalUltsLabel.text = "Ultimates: " + str(Global.total_ultimates)
 
 func _on_back_button_pressed() -> void:
 	stats_back.emit()

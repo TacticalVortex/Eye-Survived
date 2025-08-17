@@ -117,6 +117,7 @@ func stop_dash():
 
 func start_ult():
 	$Gunshot.volume_db = -6
+	Global.total_ultimates += 1
 	in_ultimate = true
 	Global.ult_cooldown = false
 	speed += 300
