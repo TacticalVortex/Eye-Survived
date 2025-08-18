@@ -19,5 +19,6 @@ func hit() -> void:
 		SoundManager.play("res://art/enemy_death.ogg")
 		Global.total_monsters -= 10
 		Global.total_bosses += 1
+		mob_died.emit()
 		drop_item()
 		call_deferred("queue_free")

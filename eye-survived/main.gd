@@ -19,6 +19,7 @@ func _ready():
 	$Settings.hide()
 	$Cursor.hide()
 	$Stats.hide()
+	score = 0
 	Global.playing_game = false
 	get_tree().paused = false
 	is_paused = false
@@ -47,18 +48,13 @@ func _physics_process(_delta: float) -> void:
 	if is_paused:
 		return
 	
-	score = 0
 	mob_check = 0
 	for mob in mobs:
 		mob_check += 1
 		if(not is_instance_valid(mob)):
 			mobs.erase(mob_check)
-			score += 1
-	$HUD.update_score(score)
 	
-	$HUD.update_stage(Global.stage)
 	$HUD.update_health(Global.health)
-	$Stage.update_stage(Global.stage)
 	
 	for mob in mobs:
 		if(not is_instance_valid(mob)):
@@ -170,6 +166,8 @@ func next_stage():
 	$TotalTimeTimer.start()
 	$MobTimer.start()
 	Global.stage += 1
+	$HUD.update_stage(Global.stage)
+	$Stage.update_stage(Global.stage)
 	if Global.stage > Global.best_stage:
 		Global.best_stage = Global.stage
 	$HUD.visible = true
@@ -187,6 +185,7 @@ func summon_boss():
 	
 	mobs.append(boss_mob)
 	add_child(boss_mob)
+	boss_mob.mob_died.connect(mob_killed)
 
 func game_over():
 	in_game = false
@@ -236,6 +235,14 @@ func _on_mob_timer_timeout():
 
 		# Spawn the mob by adding it to the Main scene.
 		add_child(mob)
+		
+		# Connects mob death signal to function mob_killed
+		mob.mob_died.connect(mob_killed)
+
+func mob_killed():
+	score += 1
+	Global.total_kills += 1
+	$HUD.update_score(score)
 
 func _on_time_timer_timeout():
 	time += 1

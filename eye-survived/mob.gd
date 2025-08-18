@@ -4,6 +4,8 @@ extends RigidBody2D
 const chest = preload("res://chest.tscn")
 var chest_array = Global.chests
 
+signal mob_died
+
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 @export var health : int = 0
 
@@ -26,6 +28,7 @@ func hit() -> void:
 		SoundManager.set_volume(1.0)
 		SoundManager.play("res://art/enemy_death.ogg")
 		Global.total_monsters -= 1
+		mob_died.emit()
 		if randi_range(0, 100)< 6:
 			drop_item()
 		queue_free()
