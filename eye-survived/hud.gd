@@ -22,7 +22,8 @@ func _process(_delta: float) -> void:
 	else:
 		$UltLabel.text = "Ultimate Not Ready"
 		
-	$FPSLabel.text = "FPS: %d" % Engine.get_frames_per_second()
+	if Global.fps_visible:
+		$FPSLabel.text = "FPS: %d" % Engine.get_frames_per_second()
 
 func show_message(text):
 	$Message.text = text
