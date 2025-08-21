@@ -83,6 +83,9 @@ func _physics_process(_delta: float) -> void:
 			elif time > 15:
 				speed *= 1 + (0.02 * Global.stage)
 			mob.linear_velocity = direction_vector * speed
+			
+			if mob.is_in_group("boss"):
+				mob.linear_velocity = direction_vector * speed * (1 + (0.02 * Global.stage))
 
 func play_game():
 	$HUD.visible = true
@@ -184,6 +187,7 @@ func summon_boss():
 	boss_mob.position = mob_spawn_location.position
 	
 	mobs.append(boss_mob)
+	boss_mob.add_to_group("boss")
 	add_child(boss_mob)
 	boss_mob.mob_died.connect(mob_killed)
 
