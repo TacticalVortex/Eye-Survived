@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal stats_back
+signal stats_reset
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,3 +23,15 @@ func update_stats():
 
 func _on_back_button_pressed() -> void:
 	stats_back.emit()
+
+func _on_reset_button_pressed() -> void:
+	Global.highscore = 0
+	Global.best_time = 0
+	Global.total_kills = 0
+	Global.best_stage = 0
+	Global.total_items = 0
+	Global.total_bosses = 0
+	Global.total_dashes = 0
+	Global.total_ultimates = 0
+	update_stats()
+	stats_reset.emit()

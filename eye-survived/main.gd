@@ -132,6 +132,10 @@ func stats_back():
 	$Stats.visible = false
 	$Menu.visible = true
 
+func stats_reset():
+	$HUD.update_total_time(0)
+	$HUD.update_score(0)
+
 func pause_menu():
 	$TimeTimer.stop()
 	$TotalTimeTimer.stop()

@@ -122,3 +122,4 @@ environment = SubResource("Environment_efxa6")
 [connection signal="music_volume" from="Settings" to="." method="change_music_volume"]
 [connection signal="toggles_back" from="Settings" to="." method="toggles_back"]
 [connection signal="stats_back" from="Stats" to="." method="stats_back"]
+[connection signal="stats_reset" from="Stats" to="." method="stats_reset"]

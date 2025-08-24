@@ -45,7 +45,7 @@ func update_time(time):
 	$TimeLabel.text = "Time: " + str(time)
 
 func update_total_time(time):
-	if time > Global.best_time:
+	if time >= Global.best_time:
 		Global.best_time = time
 		$BestTimeLabel.text = "Best Time: " + str(Global.best_time)
 
@@ -57,7 +57,7 @@ func update_health(health):
 
 func update_score(score):
 	$ScoreLabel.text = "Score: " + str(score)
-	if score > Global.highscore:
+	if score >= Global.highscore:
 		Global.highscore = score
 		$HighScoreLabel.text = "Highscore: " + str(Global.highscore)
 
