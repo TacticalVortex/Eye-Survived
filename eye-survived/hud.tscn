@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://de3l5t86ejwcd"]
+[gd_scene load_steps=5 format=3 uid="uid://de3l5t86ejwcd"]
 
 [ext_resource type="Script" uid="uid://deo4c40mpfued" path="res://hud.gd" id="1_54riv"]
 [ext_resource type="FontFile" uid="uid://d3xret8asdeg6" path="res://fonts/Xolonium-Regular.ttf" id="1_ftl2u"]
@@ -8,12 +8,6 @@ action = &"start_game"
 
 [sub_resource type="Shortcut" id="Shortcut_86bi8"]
 events = [SubResource("InputEventAction_1ya0t")]
-
-[sub_resource type="InputEventAction" id="InputEventAction_64ctp"]
-action = &"quit"
-
-[sub_resource type="Shortcut" id="Shortcut_8sq4i"]
-events = [SubResource("InputEventAction_64ctp")]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_54riv")
@@ -200,20 +194,6 @@ theme_override_font_sizes/font_size = 64
 shortcut = SubResource("Shortcut_86bi8")
 text = "Start"
 
-[node name="QuitButton" type="Button" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -125.0
-offset_top = 600.0
-offset_right = 125.0
-offset_bottom = 700.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_ftl2u")
-theme_override_font_sizes/font_size = 64
-shortcut = SubResource("Shortcut_8sq4i")
-text = "Quit"
-
 [node name="MenuButton" type="Button" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
@@ -221,9 +201,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -200.0
-offset_top = -245.0
+offset_top = -120.0
 offset_right = 200.0
-offset_bottom = -135.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_ftl2u")
@@ -235,6 +215,5 @@ wait_time = 2.0
 one_shot = true
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

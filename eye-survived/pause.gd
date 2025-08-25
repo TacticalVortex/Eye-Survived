@@ -19,8 +19,8 @@ func _on_resume_button_pressed() -> void:
 func _on_controls_button_pressed() -> void:
 	controls.emit()
 
-func _on_quit_button_pressed() -> void:
-	main_menu.emit()
-
 func _on_toggles_button_pressed() -> void:
 	toggles.emit()
+
+func _on_main_menu_button_pressed() -> void:
+	main_menu.emit()

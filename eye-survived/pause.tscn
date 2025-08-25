@@ -85,7 +85,7 @@ theme_override_fonts/font = ExtResource("2_w8uj3")
 theme_override_font_sizes/font_size = 64
 text = "Settings"
 
-[node name="QuitButton" type="Button" parent="."]
+[node name="MainMenuButton" type="Button" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -105,4 +105,4 @@ text = "Main Menu"
 [connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="ControlsButton" to="." method="_on_controls_button_pressed"]
 [connection signal="pressed" from="TogglesButton" to="." method="_on_toggles_button_pressed"]
-[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]
