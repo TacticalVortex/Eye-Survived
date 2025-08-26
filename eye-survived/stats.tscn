@@ -33,6 +33,25 @@ text = "Stats"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ResetStatsLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -265.0
+offset_top = 100.0
+offset_right = 265.0
+offset_bottom = 250.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_adv4l")
+theme_override_font_sizes/font_size = 60
+text = "Do You Want To
+Reset Stats?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="BestLabel" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
@@ -230,6 +249,39 @@ theme_override_font_sizes/font_size = 64
 shortcut = SubResource("Shortcut_xwvqn")
 text = "Back"
 
+[node name="YesButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -420.0
+offset_right = 125.0
+offset_bottom = -310.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_adv4l")
+theme_override_font_sizes/font_size = 64
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -270.0
+offset_right = 125.0
+offset_bottom = -160.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_adv4l")
+theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_xwvqn")
+text = "No"
+
 [node name="ResetButton" type="Button" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
@@ -244,8 +296,9 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_adv4l")
 theme_override_font_sizes/font_size = 64
-shortcut = SubResource("Shortcut_xwvqn")
 text = "Reset"
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="NoButton" to="." method="_on_no_button_pressed"]
 [connection signal="pressed" from="ResetButton" to="." method="_on_reset_button_pressed"]
