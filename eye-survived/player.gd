@@ -3,8 +3,8 @@ extends Area2D
 signal hit
 
 @export var speed = 450
-@export var bullet_speed = 1500
-@export var fire_rate = 0.4
+@export var bullet_speed = 1000
+@export var fire_rate = 0.5
 
 var screen_size
 var bullet = preload("res://bullet.tscn")

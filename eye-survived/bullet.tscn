@@ -10,6 +10,7 @@ height = 18.0
 [node name="Bullet" type="RigidBody2D"]
 collision_mask = 2
 mass = 0.001
+gravity_scale = 0.5
 script = ExtResource("1_at5gb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
