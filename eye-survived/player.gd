@@ -120,13 +120,13 @@ func start_ult():
 	Global.total_ultimates += 1
 	in_ultimate = true
 	Global.ult_cooldown = false
-	speed += 300
+	speed = 0
 	$UltCooldownTimer.start()
 	$UltDurationTimer.start()
 
 func stop_ult():
 	in_ultimate = false
-	speed -= 300
+	speed = 450
 
 func _on_body_entered(body):
 	if body.is_in_group("bullet"):
