@@ -19,6 +19,7 @@ func _ready():
 	$Settings.hide()
 	$Cursor.hide()
 	$Stats.hide()
+	$Secrets.hide()
 	score = 0
 	Global.playing_game = false
 	get_tree().paused = false
@@ -136,6 +137,14 @@ func stats_reset():
 	$HUD.update_total_time(0)
 	$HUD.update_score(0)
 
+func secret():
+	$Secrets.visible = true
+	$Menu.visible = false
+
+func secret_back():
+	$Secrets.visible = false
+	$Menu.visible = true
+
 func pause_menu():
 	$TimeTimer.stop()
 	$TotalTimeTimer.stop()
@@ -177,6 +186,9 @@ func next_stage():
 	$Stage.update_stage(Global.stage)
 	if Global.stage > Global.best_stage:
 		Global.best_stage = Global.stage
+		if Global.best_stage == 10:
+			Global.secrets = true
+			Global.easter_egg_1 = true
 	$HUD.visible = true
 	$Stage.visible = false
 	if fmod(Global.stage, 2) == 0:
@@ -255,13 +267,25 @@ func mob_killed():
 func _on_time_timer_timeout():
 	time += 1
 	if time > 45:
-		$MobTimer.wait_time = 0.90 - (0.1 * (Global.stage - 1))
+		if Global.stage >= 10:
+			$MobTimer.wait_time = 0.001
+		else:
+			$MobTimer.wait_time = 0.90 - (0.1 * (Global.stage - 1))
 	elif time > 30:
-		$MobTimer.wait_time = 1.10 - (0.1 * (Global.stage - 1))
+		if Global.stage >= 12:
+			$MobTimer.wait_time = 0.001
+		else:
+			$MobTimer.wait_time = 1.10 - (0.1 * (Global.stage - 1))
 	elif time > 15:
-		$MobTimer.wait_time = 1.25 - (0.1 * (Global.stage - 1))
+		if Global.stage >= 14:
+			$MobTimer.wait_time = 0.001
+		else:
+			$MobTimer.wait_time = 1.3 - (0.1 * (Global.stage - 1))
 	else:
-		$MobTimer.wait_time = 1.50 - (0.1 * (Global.stage - 1))
+		if Global.stage >= 16:
+			$MobTimer.wait_time = 0.001
+		else:
+			$MobTimer.wait_time = 1.50 - (0.1 * (Global.stage - 1))
 	$HUD.update_time(time)
 
 func _on_start_timer_timeout():

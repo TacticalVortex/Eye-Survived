@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bkc78kubbi8rm"]
+[gd_scene load_steps=19 format=4 uid="uid://bkc78kubbi8rm"]
 
 [ext_resource type="Script" uid="uid://dbvqy7ar45w62" path="res://main.gd" id="1_er6w5"]
 [ext_resource type="PackedScene" uid="uid://76oj4onm82gy" path="res://mob.tscn" id="2_0call"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dqqlue8yw5xpn" path="res://settings.tscn" id="11_efxa6"]
 [ext_resource type="PackedScene" uid="uid://0xdnpyx5q4gu" path="res://cursor.tscn" id="12_dg77c"]
 [ext_resource type="PackedScene" uid="uid://myyqgr6phk4m" path="res://stats.tscn" id="13_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://cu2tha11bvl6n" path="res://secrets.tscn" id="14_w48qg"]
 
 [sub_resource type="Curve2D" id="Curve2D_v8uxb"]
 _data = {
@@ -94,6 +95,8 @@ stream = ExtResource("6_tiujd")
 
 [node name="Stats" parent="." instance=ExtResource("13_ycdy4")]
 
+[node name="Secrets" parent="." instance=ExtResource("14_w48qg")]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_efxa6")
 
@@ -112,6 +115,7 @@ environment = SubResource("Environment_efxa6")
 [connection signal="next_stage" from="Stage" to="." method="next_stage"]
 [connection signal="controls" from="Menu" to="." method="controls"]
 [connection signal="play_game" from="Menu" to="." method="play_game"]
+[connection signal="secret" from="Menu" to="." method="secret"]
 [connection signal="stats" from="Menu" to="." method="stats"]
 [connection signal="toggles" from="Menu" to="." method="toggles"]
 [connection signal="back_button" from="Controls" to="." method="back_button"]
@@ -123,3 +127,4 @@ environment = SubResource("Environment_efxa6")
 [connection signal="toggles_back" from="Settings" to="." method="toggles_back"]
 [connection signal="stats_back" from="Stats" to="." method="stats_back"]
 [connection signal="stats_reset" from="Stats" to="." method="stats_reset"]
+[connection signal="secret_back" from="Secrets" to="." method="secret_back"]
