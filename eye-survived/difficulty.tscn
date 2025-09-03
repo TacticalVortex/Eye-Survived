@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=3 uid="uid://vkyhkd0gsxd2"]
+
+[ext_resource type="Script" uid="uid://dvp86i8do3nwx" path="res://difficulty.gd" id="1_ydaci"]
+[ext_resource type="FontFile" uid="uid://d3xret8asdeg6" path="res://fonts/Xolonium-Regular.ttf" id="2_oy530"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_mae5d"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_4hy44"]
+events = [SubResource("InputEventAction_mae5d")]
+
+[node name="Difficulty" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_ydaci")
+
+[node name="DifficultyLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -275.0
+offset_top = 35.0
+offset_right = 275.0
+offset_bottom = 185.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_oy530")
+theme_override_font_sizes/font_size = 64
+text = "Select Difficulty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EasyButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -160.0
+offset_right = 175.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_oy530")
+theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_4hy44")
+text = "Easy"
+
+[node name="MediumButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -10.0
+offset_right = 175.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_oy530")
+theme_override_font_sizes/font_size = 64
+text = "Medium"
+
+[node name="HardButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = 140.0
+offset_right = 175.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_oy530")
+theme_override_font_sizes/font_size = 64
+text = "Hard"
+
+[connection signal="pressed" from="EasyButton" to="." method="_on_easy_button_pressed"]
+[connection signal="pressed" from="MediumButton" to="." method="_on_medium_button_pressed"]
+[connection signal="pressed" from="HardButton" to="." method="_on_hard_button_pressed"]

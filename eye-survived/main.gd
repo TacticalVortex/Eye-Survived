@@ -80,9 +80,9 @@ func _physics_process(_delta: float) -> void:
 			# Choose the velocity for the mob.
 			var speed = randf_range(150.0, 250.0)
 			if time > 45:
-				speed *= 1 + (0.05 * Global.stage)
+				speed *= 1 + (0.05 * Global.stage * Global.difficulty)
 			elif time > 15:
-				speed *= 1 + (0.02 * Global.stage)
+				speed *= 1 + (0.02 * Global.stage * Global.difficulty)
 			mob.linear_velocity = direction_vector * speed
 			
 			if mob.is_in_group("boss"):

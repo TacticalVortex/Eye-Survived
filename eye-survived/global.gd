@@ -66,6 +66,9 @@ var secrets = false
 # Global variable for easter egg 1
 var easter_egg_1 = false
 
+# Global variable for difficulty
+var difficulty = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

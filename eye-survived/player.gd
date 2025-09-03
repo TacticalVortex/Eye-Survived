@@ -4,7 +4,7 @@ signal hit
 
 @export var speed = 450
 @export var bullet_speed = 1000
-@export var fire_rate = 0.5
+@export var fire_rate = 0.4
 
 var screen_size
 var bullet = preload("res://bullet.tscn")
@@ -184,6 +184,10 @@ func start(pos):
 	Global.ult_cooldown = true
 	Global.dash_cooldown = true
 	$CollisionShape2D.disabled = false
+	speed -= (25 * Global.difficulty)
+	bullet_speed -= (100 * Global.difficulty)
+	if Global.difficulty == 3:
+		Global.health -= 1
 
 func increase_fire_rate():
 	if fire_rate >= 0.08:

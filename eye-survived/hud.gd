@@ -8,6 +8,7 @@ signal main_menu
 func _ready() -> void:
 	$BestTimeLabel.text = "Best Time: " + str(Global.best_time)
 	$HighScoreLabel.text = "Highscore: " + str(Global.highscore)
+	$Difficulty.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -77,10 +78,25 @@ func toggle_fps():
 func _on_start_button_pressed():
 	$StartButton.hide()
 	$MenuButton.hide()
-	start_game.emit()
+	for labels in self.get_children():
+		if labels is Label:
+			labels.hide()
+	$Difficulty.show()
 
 func _on_message_timer_timeout():
 	$Message.hide()
 
 func _on_menu_button_pressed():
 	main_menu.emit()
+
+func game_start():
+	$Difficulty.hide()
+	for labels in self.get_children():
+		if labels is Label:
+			labels.show()
+	if !Global.highscore_visible:
+		$HighScoreLabel.hide()
+		$BestTimeLabel.hide()
+	if !Global.fps_visible:
+		$FPSLabel.hide()
+	start_game.emit()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://de3l5t86ejwcd"]
+[gd_scene load_steps=6 format=3 uid="uid://de3l5t86ejwcd"]
 
 [ext_resource type="Script" uid="uid://deo4c40mpfued" path="res://hud.gd" id="1_54riv"]
 [ext_resource type="FontFile" uid="uid://d3xret8asdeg6" path="res://fonts/Xolonium-Regular.ttf" id="1_ftl2u"]
+[ext_resource type="PackedScene" uid="uid://vkyhkd0gsxd2" path="res://difficulty.tscn" id="3_8sq4i"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_1ya0t"]
 action = &"start_game"
@@ -210,10 +211,13 @@ theme_override_fonts/font = ExtResource("1_ftl2u")
 theme_override_font_sizes/font_size = 64
 text = "Main Menu"
 
+[node name="Difficulty" parent="." instance=ExtResource("3_8sq4i")]
+
 [node name="MessageTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="start_game" from="Difficulty" to="." method="game_start"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
