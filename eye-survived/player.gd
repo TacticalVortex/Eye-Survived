@@ -126,7 +126,7 @@ func start_ult():
 
 func stop_ult():
 	in_ultimate = false
-	speed = 450
+	speed = 450 - (25 * Global.difficulty)
 
 func _on_body_entered(body):
 	if body.is_in_group("bullet"):
@@ -186,11 +186,13 @@ func start(pos):
 	$CollisionShape2D.disabled = false
 	speed -= (25 * Global.difficulty)
 	bullet_speed -= (100 * Global.difficulty)
+	$DashCooldownTimer.wait_time += 1 * Global.difficulty
+	$UltCooldownTimer.wait_time += 4 * Global.difficulty
 	if Global.difficulty == 3:
 		Global.health -= 1
 
 func increase_fire_rate():
-	if fire_rate >= 0.08:
+	if fire_rate >= (0.08 + 0.02 * Global.difficulty):
 		bullet_speed += 100
 		fire_rate -= 0.02
 
