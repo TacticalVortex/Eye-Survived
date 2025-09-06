@@ -4,7 +4,7 @@ extends Mob
 
 func _ready() -> void:
 	super._ready()
-	health = 20 + (7 * Global.stage)
+	health = 20 + (7 * Global.stage) + ((Global.stage * Global.difficulty) / 2)
 	$AnimatedSprite2D.scale = Vector2(size, size)
 	$CollisionShape2D.scale = Vector2(size, size)
 	$CollisionShape2D2.scale = Vector2(size, size)
