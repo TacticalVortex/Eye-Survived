@@ -1,6 +1,6 @@
 extends Mob
 
-@onready var size : float = 1.3 + (Global.stage * 0.05)
+@onready var size :float= 1.3 + (Global.stage * 0.05)
 
 func _ready() -> void:
 	super._ready()

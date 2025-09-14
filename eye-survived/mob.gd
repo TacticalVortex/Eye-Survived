@@ -6,8 +6,8 @@ var chest_array = Global.chests
 
 signal mob_died
 
-@onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
-@export var health : int = 0
+@onready var sprite :AnimatedSprite2D= $AnimatedSprite2D
+@export var health :int= 0
 
 func _ready() -> void:
 	var mob_types = sprite.sprite_frames.get_animation_names()

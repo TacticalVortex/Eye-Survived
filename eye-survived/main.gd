@@ -2,13 +2,13 @@ extends Node
 
 @export var mob_scene: PackedScene
 @export var boss_mob_scene: PackedScene
-var score
-var time
-var total_time
+var score :int= 0
+var time :int= 0
+var total_time :int= 0
 var mob_check
-var mobs = []
-var is_paused = false
-var in_game = false
+var mobs :Array= []
+var is_paused :bool= false
+var in_game :bool= false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

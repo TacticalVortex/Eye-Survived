@@ -2,30 +2,30 @@ extends Area2D
 
 signal hit
 
-@export var speed = 450
-@export var bullet_speed = 1000
-@export var fire_rate = 0.4
+@export var speed :int= 450
+@export var bullet_speed :int= 1000
+@export var fire_rate :float= 0.4
 
 var screen_size
 var bullet = preload("res://bullet.tscn")
-var can_fire = false
+var can_fire :bool= false
 var chest_array = Global.chests
 
-@export var dash_velocity = 1600
-@export var dash_duration = 0.2
-@export var dash_cooldown = 3.0
-var dash_timer = 0.5
-var is_dashing = false
-var can_dash = false
+@export var dash_velocity :int= 1600
+@export var dash_duration :float= 0.2
+@export var dash_cooldown :float= 3.0
+var dash_timer :float= 0.5
+var is_dashing :bool= false
+var can_dash :bool= false
 var dash_direction = Vector2.ZERO
 
-var can_be_hit = true
+var can_be_hit :bool= true
 
-@export var ult_duration = 3.0
-@export var ult_cooldown = 45.0
-var in_ultimate = false
-var can_ult = false
-var ult_spin = 0
+@export var ult_duration :float= 3.0
+@export var ult_cooldown :float= 45.0
+var in_ultimate :bool= false
+var can_ult :bool= false
+var ult_spin :float= 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

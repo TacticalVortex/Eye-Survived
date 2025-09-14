@@ -1,11 +1,11 @@
 extends Node
 
-var num_players = 8
-var bus = "master"
-var volume: float = 1.0
+var num_players :int= 8
+var bus :String= "master"
+var volume :float= 1.0
 
-var available = []  # The available players.
-var queue = []  # The queue of sounds to play.
+var available :Array= []  # The available players.
+var queue :Array= []  # The queue of sounds to play.
 
 func _ready():
 	# Create the pool of AudioStreamPlayer nodes.

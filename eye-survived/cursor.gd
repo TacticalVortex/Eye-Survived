@@ -1,14 +1,14 @@
 extends CanvasLayer
 
 @onready var cursor = $Sprite2D
-var cursor_speed = 265
-var moving_controller = false
+var cursor_speed :int= 265
+var moving_controller :bool= false
 var move_vector
 var raw_x
 var raw_y
 var move_x
 var move_y
-var deadzone = 0.25
+var deadzone :float= 0.25
 
 func _ready():
 	pass
